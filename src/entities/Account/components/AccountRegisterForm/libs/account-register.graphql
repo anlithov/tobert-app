@@ -1,0 +1,23 @@
+mutation accountRegister(
+  $name: String!
+  $password: String!
+  $passwordConfirm: String!
+  $registerCode: String!
+) {
+  account {
+    auth {
+      register(
+        input: {
+          name: $name
+          password: $password
+          passwordConfirm: $passwordConfirm
+          registerCode: $registerCode
+        }
+      ) {
+        id
+        nick
+        jwtToken
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+mutation accountLogin($name: String!, $password: String!) {
+  account {
+    auth {
+      login(input: { name: $name, password: $password }) {
+        id
+        nick
+        jwtToken
+      }
+    }
+  }
+}
