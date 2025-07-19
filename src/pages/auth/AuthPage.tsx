@@ -7,7 +7,7 @@ import AccountAuthCard from '../../entities/Account/ui/AccountAuthCard/AccountAu
 import TabsV2 from '../../zolp/shared/ui/atoms/Tabs/v2/TabsV2.tsx';
 import AccountLoginForm from '../../entities/Account/components/AccountLoginForm/AccountLoginForm.tsx';
 import { FormContainer2 } from '../../entities/Account/components/AccountLoginForm/AccountLoginForm.styled.ts';
-import AccountRegisterForm from '../../entities/Account/components/AccountRegisterForm/AccountRegisterForm.tsx';
+import AccountRegisterForm from '../../features/auth/AccountRegisterForm/AccountRegisterForm.tsx';
 import { useAccountLoginFormTabs } from '../../entities/Account/components/AccountLoginForm/libs/hooks/use-account-login-form-tabs.hook.tsx';
 import { useSetBrowserTabName } from '../../zolp/shared/lib/hooks/use-set-browser-tab-name.ts';
 
