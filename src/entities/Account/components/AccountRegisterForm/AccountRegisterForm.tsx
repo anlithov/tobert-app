@@ -6,7 +6,7 @@ import { useAccountRegisterSchema } from './libs/hooks/use-account-register.sche
 import RegisterFields from './components/RegisterFields/RegisterFields';
 import RegisterErrorInformer from './components/RegisterErrorInformer/RegisterErrorInformer';
 import RegisterButton from './components/RegisterButton/RegisterButton';
-import Divider from '../../../../zolp/shared/ui/Divider/Divider.tsx';
+import Divider from '../../../../zolp/shared/ui/atoms/Divider/Divider.tsx';
 
 const AccountRegisterForm: FC = () => {
   const [errorMessage, setErrorMessage] = useState<{

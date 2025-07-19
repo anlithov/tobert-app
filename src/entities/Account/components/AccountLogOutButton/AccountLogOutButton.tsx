@@ -6,7 +6,7 @@ import {
   AUTH_SCREENS,
   ROUTES_NAMES_GENERATOR,
 } from '../../../../shared/lib/constants/routes-names.const.ts';
-import ButtonIconed from '../../../../zolp/shared/ui/Button/ButtonIconed/ButtonIconed.tsx';
+import ButtonIconed from '../../../../zolp/shared/ui/atoms/Button/ButtonIconed/ButtonIconed.tsx';
 import { useJwtStore } from '../../../../app/lib/hooks/use-jwt-tokens.hook.ts';
 
 interface Props {

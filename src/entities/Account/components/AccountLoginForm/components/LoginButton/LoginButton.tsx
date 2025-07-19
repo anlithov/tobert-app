@@ -4,7 +4,7 @@ import {
   LOGIN_FIELDS_NAMES,
   LoginFieldsNames,
 } from '../../libs/constants/login-field-names.const';
-import { ButtonCommon } from '../../../../../../zolp/shared/ui/Button/ButtonCommon/ButtonCommon.tsx';
+import { ButtonCommon } from '../../../../../../zolp/shared/ui/atoms/Button/ButtonCommon/ButtonCommon.tsx';
 import { accountLoginFormMessages } from '../../libs/messages/account-login-form.messages.ts';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES_NAMES } from '../../../../../../shared/lib/constants/routes-names.const.ts';

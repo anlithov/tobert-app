@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { accountAuthCardTheme } from './AccountAuthCard.theme.ts';
-import { ContainerMainSecondary } from '../../../../zolp/shared/ui/Containers/ContainerCover.tsx';
+import { ContainerMainSecondary } from '../../../../zolp/shared/ui/atoms/Containers/ContainerCover.tsx';
 
 export const AuthCardContainer = styled.div`
   display: flex;

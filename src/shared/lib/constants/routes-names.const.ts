@@ -12,7 +12,6 @@ export const DYNAMIC_SLUGS = {
 export const ROUTES_NAMES = {
   AUTH: '/auth',
   AUTH_DYNAMIC: `/auth/:${DYNAMIC_SLUGS.authMode}`,
-
   SHOWCASE: '/showcase',
 };
 

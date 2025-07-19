@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
-import { useModal } from '../../features/Modal/lib/hook/use-modal.hook.ts';
-import SingleModal from '../../features/Modal/SingleModal.tsx';
+import { useModal } from '../../shared/ui/templates/Modal/lib/hook/use-modal.hook.ts';
+import SingleModal from '../../shared/ui/templates/Modal/SingleModal.tsx';
 
 const ModalProvider = () => {
   const { closeModal, modals } = useModal();

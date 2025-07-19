@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import { useFormikContext } from 'formik';
 import { RegisterValues } from '../../libs/types/register.types';
 import { useKeyPress } from '../../../../../../shared/lib/hooks/use-key-press.hook.ts';
-import { ButtonCommon } from '../../../../../../zolp/shared/ui/Button/ButtonCommon/ButtonCommon.tsx';
+import { ButtonCommon } from '../../../../../../zolp/shared/ui/atoms/Button/ButtonCommon/ButtonCommon.tsx';
 import { REGISTER_FIELDS_NAMES } from '../../libs/constants/register-fields.const.ts';
 import { accountRegisterFormMessages } from '../../libs/messages/account-login-form.messages.ts';
 import { useNavigate } from 'react-router-dom';

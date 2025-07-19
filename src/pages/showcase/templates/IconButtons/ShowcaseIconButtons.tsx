@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdStarOutline } from 'react-icons/md';
-import ButtonIconed from '../../../../zolp/shared/ui/Button/ButtonIconed/ButtonIconed.tsx';
+import ButtonIconed from '../../../../zolp/shared/ui/atoms/Button/ButtonIconed/ButtonIconed.tsx';
 import { BoxButtons, Container } from './ShowcaseIconButtons.styled.ts';
 
 const ShowcaseButtonIcons = () => {

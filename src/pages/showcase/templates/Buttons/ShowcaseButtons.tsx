@@ -1,7 +1,7 @@
 import React from 'react';
 import { BoxButtons, Container } from './ShowcaseButtons.styled';
-import { ButtonCommon } from '../../../../zolp/shared/ui/Button/ButtonCommon/ButtonCommon.tsx';
-import { BUTTON_VARIANTS } from '../../../../zolp/shared/ui/Button/libs/constants/button.variants.ts';
+import { ButtonCommon } from '../../../../zolp/shared/ui/atoms/Button/ButtonCommon/ButtonCommon.tsx';
+import { BUTTON_VARIANTS } from '../../../../zolp/shared/ui/atoms/Button/libs/constants/button.variants.ts';
 
 const ShowcaseButtons = () => {
   return (

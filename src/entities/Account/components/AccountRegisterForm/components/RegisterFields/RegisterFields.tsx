@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { REGISTER_FIELDS_NAMES } from '../../libs/constants/register-fields.const';
 import { registerMessages } from '../../libs/constants/register-form.messages';
-import AppFormikField from '../../../../../../zolp/shared/ui/Fields/formik-wrapper/AppFieldFormik.tsx';
-import { BUTTON_VARIANTS } from '../../../../../../zolp/shared/ui/Button/libs/constants/button.variants.ts';
+import AppFormikField from '../../../../../../zolp/shared/ui/atoms/Fields/formik-wrapper/AppFieldFormik.tsx';
+import { BUTTON_VARIANTS } from '../../../../../../zolp/shared/ui/atoms/Button/libs/constants/button.variants.ts';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { FIELD_VARIANTS } from '../../../../../../zolp/shared/ui/Fields/libs/constants/button.variants.ts';
+import { FIELD_VARIANTS } from '../../../../../../zolp/shared/ui/atoms/Fields/libs/constants/button.variants.ts';
 
 interface Props {
   resetMessage: () => void;

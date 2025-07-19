@@ -7,9 +7,9 @@ import LoginButton from './components/LoginButton/LoginButton.tsx';
 import LoginFields from './components/LoginFields/LoginFields';
 import LoginErrorInformer from './components/LoginErrorInformer/LoginErrorInformer';
 import { useAccountLoginFormValidationSchema } from './libs/hooks/use-account-login-form-validation.schema.tsx';
-import Divider from '../../../../zolp/shared/ui/Divider/Divider.tsx';
-import { ButtonCommon } from '../../../../zolp/shared/ui/Button/ButtonCommon/ButtonCommon.tsx';
-import { BUTTON_VARIANTS } from '../../../../zolp/shared/ui/Button/libs/constants/button.variants.ts';
+import Divider from '../../../../zolp/shared/ui/atoms/Divider/Divider.tsx';
+import { ButtonCommon } from '../../../../zolp/shared/ui/atoms/Button/ButtonCommon/ButtonCommon.tsx';
+import { BUTTON_VARIANTS } from '../../../../zolp/shared/ui/atoms/Button/libs/constants/button.variants.ts';
 import {
   AUTH_SCREENS,
   ROUTES_NAMES_GENERATOR,

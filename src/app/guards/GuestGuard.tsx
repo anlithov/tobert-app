@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useJwtStore } from '../lib/hooks/use-jwt-tokens.hook.ts';
-import { useModal } from '../../zolp/features/Modal/lib/hook/use-modal.hook.ts';
+import { useModal } from '../../zolp/shared/ui/templates/Modal/lib/hook/use-modal.hook.ts';
 import { ROUTES_NAMES } from '../../shared/lib/constants/routes-names.const.ts';
 import LoadingScreen from '../../widgets/LoaderScreen/LoadingScreen.tsx';
 

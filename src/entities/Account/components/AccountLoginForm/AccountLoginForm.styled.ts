@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReplacerContainer } from '../../../../zolp/features/ReplacerDelayed/SmoothReplacer.styled.tsx';
+import { ReplacerContainer } from '../../../../zolp/shared/ui/molecules/ReplacerDelayed/SmoothReplacer.styled.tsx';
 
 export const FormContainer = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BoxInputs, Container } from './ShowcaseCheckBoxes.styled';
-import Checkbox from '../../../../zolp/shared/ui/Checkbox/Checkbox.tsx';
-import CheckboxWithLabel from '../../../../zolp/shared/ui/Checkbox/CheckboxWithLabel/CheckboxWithLabel.tsx';
+import Checkbox from '../../../../zolp/shared/ui/atoms/Checkbox/Checkbox.tsx';
+import CheckboxWithLabel from '../../../../zolp/shared/ui/atoms/Checkbox/CheckboxWithLabel/CheckboxWithLabel.tsx';
 
 const ShowcaseCheckBoxes = () => {
   const [value, setValue] = useState(true);

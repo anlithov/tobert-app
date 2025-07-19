@@ -6,7 +6,7 @@ import {
   TitleApp,
   TitleContainer,
 } from './AccountAuthCard.styled.ts';
-import Logo from '../../../../features/Logo/Logo';
+import Logo from '../../../../shared/ui/molecules/Logo/Logo';
 
 type UserAuthCardProps = {
   children: ReactNode;

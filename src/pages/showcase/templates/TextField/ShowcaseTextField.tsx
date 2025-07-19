@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BiInfoCircle } from 'react-icons/bi';
 import { Box, Container } from './ShowcaseTextField.styled';
-import AppField from '../../../../zolp/shared/ui/Fields/base/AppField.tsx';
+import AppField from '../../../../zolp/shared/ui/atoms/Fields/base/AppField.tsx';
 
 const ShowcaseTextField = () => {
   const [valueInput, setValueInput] = useState<string>('66');
