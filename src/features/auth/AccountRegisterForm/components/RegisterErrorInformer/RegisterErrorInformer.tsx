@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import InlineMessage from '../../../../../../zolp/shared/ui/atoms/InlineMessages/InlineMessage.tsx';
+import InlineMessage from '../../../../../zolp/shared/ui/atoms/InlineMessages/InlineMessage.tsx';
 
 interface Props {
   text: string;

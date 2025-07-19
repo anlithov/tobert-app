@@ -1,14 +1,14 @@
 import React, { FC, useEffect } from 'react';
 import { useFormikContext } from 'formik';
-import { RegisterValues } from '../../libs/types/register.types';
-import { useKeyPress } from '../../../../../../shared/lib/hooks/use-key-press.hook.ts';
-import { ButtonCommon } from '../../../../../../zolp/shared/ui/atoms/Button/ButtonCommon/ButtonCommon.tsx';
+import { RegisterValues } from '../../libs/types/register.types.ts';
+import { useKeyPress } from '../../../../../shared/lib/hooks/use-key-press.hook.ts';
+import { ButtonCommon } from '../../../../../zolp/shared/ui/atoms/Button/ButtonCommon/ButtonCommon.tsx';
 import { REGISTER_FIELDS_NAMES } from '../../libs/constants/register-fields.const.ts';
 import { accountRegisterFormMessages } from '../../libs/messages/account-login-form.messages.ts';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES_NAMES } from '../../../../../../shared/lib/constants/routes-names.const.ts';
-import { useAccountRegisterMutation } from '../../../../../../__graphql/generated.ts';
-import { useJwtStore } from '../../../../../../app/lib/hooks/use-jwt-tokens.hook.ts';
+import { ROUTES_NAMES } from '../../../../../shared/lib/constants/routes-names.const.ts';
+import { useAccountRegisterMutation } from '../../../../../__graphql/generated.ts';
+import { useJwtStore } from '../../../../../app/lib/hooks/use-jwt-tokens.hook.ts';
 
 interface Props {
   setErrorMessage: (opts: {

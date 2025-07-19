@@ -1,4 +1,4 @@
-import { defineMessagesExtended } from '../../../../../../zolp/shared/lib/helpers/define-messages-extended.ts';
+import { defineMessagesExtended } from '../../../../../zolp/shared/lib/helpers/define-messages-extended.ts';
 
 export const registerMessages = defineMessagesExtended(
   'app.providers.YupRewriteMessagesProvider',
