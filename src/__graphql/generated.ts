@@ -41,14 +41,36 @@ export type AccountAuthedOutput = {
   nick: Scalars['String']['output'];
 };
 
+export type AccountGeneralMutations = {
+  __typename?: 'AccountGeneralMutations';
+  checkNameAvailability: AccountNameAvailabilityOutput;
+};
+
+
+export type AccountGeneralMutationsCheckNameAvailabilityArgs = {
+  input: CheckAccountNameAvailabilityInput;
+};
+
 export type AccountLoginInput = {
   name: Scalars['String']['input'];
   password: Scalars['String']['input'];
 };
 
+export type AccountManageMutations = {
+  __typename?: 'AccountManageMutations';
+  delete: Scalars['String']['output'];
+};
+
 export type AccountMutations = {
   __typename?: 'AccountMutations';
   auth: AccountAuthMutations;
+  general: AccountGeneralMutations;
+  manage: AccountManageMutations;
+};
+
+export type AccountNameAvailabilityOutput = {
+  __typename?: 'AccountNameAvailabilityOutput';
+  isAvailable: Scalars['Boolean']['output'];
 };
 
 export type AccountRegisterInput = {
@@ -58,9 +80,45 @@ export type AccountRegisterInput = {
   registerCode: Scalars['String']['input'];
 };
 
+export type BotDcaCombinedIdOutput = {
+  __typename?: 'BotDcaCombinedIdOutput';
+  accountRowId: Scalars['Int']['output'];
+  botRowId: Scalars['Int']['output'];
+  cexAccountRowId: Scalars['Int']['output'];
+};
+
 export type BotMutations = {
   __typename?: 'BotMutations';
   dca: DcaBotMutations;
+};
+
+export type CancelDcaBotTriggerInput = {
+  triggerId: Scalars['Int']['input'];
+};
+
+export type CanceledBotDcaTriggerOutput = {
+  __typename?: 'CanceledBotDcaTriggerOutput';
+  triggerId: Scalars['Int']['output'];
+};
+
+export type CexAccountAuthMutations = {
+  __typename?: 'CexAccountAuthMutations';
+  login: CexAccountJwtOutput;
+};
+
+
+export type CexAccountAuthMutationsLoginArgs = {
+  input: CexAccountLoginInput;
+};
+
+export type CexAccountGeneralMutations = {
+  __typename?: 'CexAccountGeneralMutations';
+  checkNameAvailability: CexAccountNameAvailabilityOutput;
+};
+
+
+export type CexAccountGeneralMutationsCheckNameAvailabilityArgs = {
+  input: CheckCexAccountNameAvailabilityInput;
 };
 
 export type CexAccountJwtOutput = {
@@ -75,6 +133,23 @@ export type CexAccountLoginInput = {
   totpCode?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type CexAccountManageMutations = {
+  __typename?: 'CexAccountManageMutations';
+  changeName: CexAccountMetaOutput;
+  create: CexAccountJwtOutput;
+  delete: IdOutput;
+};
+
+
+export type CexAccountManageMutationsChangeNameArgs = {
+  input: ChangeCexAccountNameInput;
+};
+
+
+export type CexAccountManageMutationsCreateArgs = {
+  input: CreateCexAccountInput;
+};
+
 export type CexAccountMetaOutput = {
   __typename?: 'CexAccountMetaOutput';
   cexName: CexName;
@@ -84,25 +159,14 @@ export type CexAccountMetaOutput = {
 
 export type CexAccountMutations = {
   __typename?: 'CexAccountMutations';
-  changeName: CexAccountMetaOutput;
-  create: CexAccountJwtOutput;
-  delete: IdOutput;
-  login: CexAccountJwtOutput;
+  auth: CexAccountAuthMutations;
+  general: CexAccountGeneralMutations;
+  manage: CexAccountManageMutations;
 };
 
-
-export type CexAccountMutationsChangeNameArgs = {
-  input: ChangeCexAccountNameInput;
-};
-
-
-export type CexAccountMutationsCreateArgs = {
-  input: CreateCexAccountInput;
-};
-
-
-export type CexAccountMutationsLoginArgs = {
-  input: CexAccountLoginInput;
+export type CexAccountNameAvailabilityOutput = {
+  __typename?: 'CexAccountNameAvailabilityOutput';
+  isAvailable: Scalars['Boolean']['output'];
 };
 
 export type CexAccountQueries = {
@@ -119,6 +183,24 @@ export type ChangeCexAccountNameInput = {
   name: Scalars['String']['input'];
 };
 
+export type CheckAccountNameAvailabilityInput = {
+  name: Scalars['String']['input'];
+};
+
+export type CheckCexAccountNameAvailabilityInput = {
+  name: Scalars['String']['input'];
+};
+
+export type CreateBotDcaPriceDropTriggerOutput = {
+  __typename?: 'CreateBotDcaPriceDropTriggerOutput';
+  triggerId: Scalars['Int']['output'];
+};
+
+export type CreateBotDcaTrailingPriceDropTriggerOutput = {
+  __typename?: 'CreateBotDcaTrailingPriceDropTriggerOutput';
+  triggerId: Scalars['Int']['output'];
+};
+
 export type CreateCexAccountInput = {
   cexAccountPassword: Scalars['String']['input'];
   cexName: CexName;
@@ -133,57 +215,143 @@ export type CreateCexAccountInput = {
 export type CreateDcaBotInput = {
   buyConfig: DcaBuyConfigInput;
   initialBuyConfig?: InputMaybe<DcaInitialBuyConfigInput>;
-  symbol: Scalars['String']['input'];
+  initialTriggers?: InputMaybe<DcaInitialTriggersInput>;
+  name: Scalars['String']['input'];
   testMode?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type CreateDcaBotPriceDropTriggerInput = {
+  activeEffect: DcaBotTriggerActiveEffect;
+  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  botId: Scalars['Int']['input'];
+  executionPrice: Scalars['Float']['input'];
+  position: DcaBotTriggerPosition;
+  symbol: Scalars['String']['input'];
+};
+
+export type CreateDcaBotTrailingPriceDropTriggerInput = {
+  activeEffect: DcaBotTriggerActiveEffect;
+  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  botId: Scalars['Int']['input'];
+  percentageDrop: Scalars['Float']['input'];
+  position: DcaBotTriggerPosition;
+  symbol: Scalars['String']['input'];
 };
 
 export type DcaBotIdInput = {
   botId: Scalars['Int']['input'];
 };
 
-export type DcaBotMutations = {
-  __typename?: 'DcaBotMutations';
-  create: Scalars['String']['output'];
-  pause: Scalars['String']['output'];
-  resume: Scalars['String']['output'];
-  stop: Scalars['String']['output'];
-  updateConfig: Scalars['String']['output'];
+export type DcaBotManageMutations = {
+  __typename?: 'DcaBotManageMutations';
+  create: BotDcaCombinedIdOutput;
+  dca: DcaBotMutations;
+  pause: BotDcaCombinedIdOutput;
+  resume: BotDcaCombinedIdOutput;
+  stop: BotDcaCombinedIdOutput;
+  updateConfig: BotDcaCombinedIdOutput;
 };
 
 
-export type DcaBotMutationsCreateArgs = {
+export type DcaBotManageMutationsCreateArgs = {
   input: CreateDcaBotInput;
 };
 
 
-export type DcaBotMutationsPauseArgs = {
+export type DcaBotManageMutationsPauseArgs = {
   input: DcaBotIdInput;
 };
 
 
-export type DcaBotMutationsResumeArgs = {
+export type DcaBotManageMutationsResumeArgs = {
   input: DcaBotIdInput;
 };
 
 
-export type DcaBotMutationsStopArgs = {
+export type DcaBotManageMutationsStopArgs = {
   input: DcaBotIdInput;
 };
 
 
-export type DcaBotMutationsUpdateConfigArgs = {
+export type DcaBotManageMutationsUpdateConfigArgs = {
   input: DcaUpdateBuyConfigInput;
 };
 
+export type DcaBotMutations = {
+  __typename?: 'DcaBotMutations';
+  manage: DcaBotManageMutations;
+  trigger: DcaBotTriggerMutations;
+};
+
+export type DcaBotPriceDropTriggerManageMutations = {
+  __typename?: 'DcaBotPriceDropTriggerManageMutations';
+  create: CreateBotDcaPriceDropTriggerOutput;
+  update: CreateBotDcaPriceDropTriggerOutput;
+};
+
+
+export type DcaBotPriceDropTriggerManageMutationsCreateArgs = {
+  input: CreateDcaBotPriceDropTriggerInput;
+};
+
+
+export type DcaBotPriceDropTriggerManageMutationsUpdateArgs = {
+  input: UpdateDcaBotPriceDropTriggerInput;
+};
+
+export type DcaBotTrailingPriceDropTriggerManageMutations = {
+  __typename?: 'DcaBotTrailingPriceDropTriggerManageMutations';
+  create: CreateBotDcaTrailingPriceDropTriggerOutput;
+  update: CreateBotDcaPriceDropTriggerOutput;
+};
+
+
+export type DcaBotTrailingPriceDropTriggerManageMutationsCreateArgs = {
+  input: CreateDcaBotTrailingPriceDropTriggerInput;
+};
+
+
+export type DcaBotTrailingPriceDropTriggerManageMutationsUpdateArgs = {
+  input: UpdateDcaBotTrailingPriceDropTriggerInput;
+};
+
+export enum DcaBotTriggerActiveEffect {
+  ForbiddenDcaBuySession = 'FORBIDDEN_DCA_BUY_SESSION',
+  ForbiddenDcaSymbolsListBuyOrders = 'FORBIDDEN_DCA_SYMBOLS_LIST_BUY_ORDERS',
+  None = 'NONE'
+}
+
+export type DcaBotTriggerManageMutations = {
+  __typename?: 'DcaBotTriggerManageMutations';
+  cancel: CanceledBotDcaTriggerOutput;
+  priceDrop: DcaBotPriceDropTriggerManageMutations;
+  trailingPriceDrop: DcaBotTrailingPriceDropTriggerManageMutations;
+};
+
+
+export type DcaBotTriggerManageMutationsCancelArgs = {
+  input: CancelDcaBotTriggerInput;
+};
+
+export type DcaBotTriggerMutations = {
+  __typename?: 'DcaBotTriggerMutations';
+  manage: DcaBotTriggerManageMutations;
+};
+
+export enum DcaBotTriggerPosition {
+  AfterBuy = 'AFTER_BUY',
+  AfterInitialBuy = 'AFTER_INITIAL_BUY',
+  Immediate = 'IMMEDIATE'
+}
+
 export type DcaBuyConfigInput = {
-  baseAmount: Scalars['Float']['input'];
   cronPattern: Scalars['String']['input'];
+  firstBuyQuoteAmount: Scalars['Float']['input'];
   multiplierSchema: DcaMultiplierSchema;
   multiplierStep: Scalars['Float']['input'];
-  stopBuyBudgetLimit?: InputMaybe<Scalars['Float']['input']>;
-  stopBuyOrdersLimit?: InputMaybe<Scalars['Int']['input']>;
-  stopBuyRoiLessOrEqual?: InputMaybe<Scalars['Float']['input']>;
-  unit: DcaUnit;
+  skipBuyBudgetLimit?: InputMaybe<Scalars['Float']['input']>;
+  skipBuyRoiLessOrEqual?: InputMaybe<Scalars['Float']['input']>;
+  symbolConfigs: Array<DcaBuySymbolConfigInput>;
 };
 
 export type DcaBuyConfigOptionalInput = {
@@ -192,14 +360,30 @@ export type DcaBuyConfigOptionalInput = {
   multiplierSchema?: InputMaybe<DcaMultiplierSchema>;
   multiplierStep?: InputMaybe<Scalars['Float']['input']>;
   stopBuyBudgetLimit?: InputMaybe<Scalars['Float']['input']>;
-  stopBuyOrdersLimit?: InputMaybe<Scalars['Int']['input']>;
   stopBuyRoiLessOrEqual?: InputMaybe<Scalars['Float']['input']>;
   unit?: InputMaybe<DcaUnit>;
 };
 
+export type DcaBuySymbolConfigInput = {
+  allocationRatio: Scalars['Float']['input'];
+  stopBuyBudgetLimit?: InputMaybe<Scalars['Float']['input']>;
+  stopBuyRoiLessOrEqual?: InputMaybe<Scalars['Float']['input']>;
+  symbol: Scalars['String']['input'];
+};
+
 export type DcaInitialBuyConfigInput = {
-  amount: Scalars['Float']['input'];
-  unit: DcaUnit;
+  quoteAmount: Scalars['Float']['input'];
+  symbolConfigs: Array<DcaInitialBuySymbolConfigInput>;
+};
+
+export type DcaInitialBuySymbolConfigInput = {
+  allocationRatio: Scalars['Float']['input'];
+  symbol: Scalars['String']['input'];
+};
+
+export type DcaInitialTriggersInput = {
+  priceDropTriggers?: InputMaybe<Array<DcaSymbolPriceDropTriggerInput>>;
+  trailingPriceDropTriggers?: InputMaybe<Array<DcaTrailingPriceDropTriggerInput>>;
 };
 
 export enum DcaMultiplierSchema {
@@ -224,11 +408,27 @@ export enum DcaMultiplierSchema {
   Martingale = 'MARTINGALE'
 }
 
+export type DcaSymbolPriceDropTriggerInput = {
+  activeEffect: DcaBotTriggerActiveEffect;
+  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  executionPrice: Scalars['Float']['input'];
+  position: DcaBotTriggerPosition;
+  symbol: Scalars['String']['input'];
+};
+
+export type DcaTrailingPriceDropTriggerInput = {
+  activeEffect: DcaBotTriggerActiveEffect;
+  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  percentageDrop: Scalars['Float']['input'];
+  position: DcaBotTriggerPosition;
+  symbol: Scalars['String']['input'];
+};
+
 export enum DcaUnit {
   /** e.g. BTC */
-  Coin = 'COIN',
+  BaseCoin = 'BASE_COIN',
   /** e.g. USDT */
-  StableCoin = 'STABLE_COIN'
+  QuoteCoin = 'QUOTE_COIN'
 }
 
 export type DcaUpdateBuyConfigInput = {
@@ -259,6 +459,22 @@ export type QueryRoot = {
   cexAccount: CexAccountQueries;
   general: GeneralQueries;
   ping: Scalars['String']['output'];
+};
+
+export type UpdateDcaBotPriceDropTriggerInput = {
+  activeEffect?: InputMaybe<DcaBotTriggerActiveEffect>;
+  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  executionPrice?: InputMaybe<Scalars['Float']['input']>;
+  position?: InputMaybe<DcaBotTriggerPosition>;
+  triggerId: Scalars['Int']['input'];
+};
+
+export type UpdateDcaBotTrailingPriceDropTriggerInput = {
+  activeEffect?: InputMaybe<DcaBotTriggerActiveEffect>;
+  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  percentageDrop?: InputMaybe<Scalars['Float']['input']>;
+  position?: InputMaybe<DcaBotTriggerPosition>;
+  triggerId: Scalars['Int']['input'];
 };
 
 export type AccountLoginMutationVariables = Exact<{

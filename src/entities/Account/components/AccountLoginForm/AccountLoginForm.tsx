@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { FormContainer } from './AccountLoginForm.styled.ts';
 import { LOGIN_FIELDS_NAMES } from './libs/constants/login-field-names.const';
-import UserLoginButton from './components/UserLoginButton/UserLoginButton';
+import LoginButton from './components/LoginButton/LoginButton.tsx';
 import LoginFields from './components/LoginFields/LoginFields';
 import LoginErrorInformer from './components/LoginErrorInformer/LoginErrorInformer';
 import { useAccountLoginFormValidationSchema } from './libs/hooks/use-account-login-form-validation.schema.tsx';
@@ -25,37 +25,35 @@ const AccountLoginForm = () => {
   const validationSchema = useAccountLoginFormValidationSchema();
 
   return (
-    <>
-      <Formik
-        initialValues={{
-          [LOGIN_FIELDS_NAMES.name]: '',
-          [LOGIN_FIELDS_NAMES.password]: '',
-        }}
-        onSubmit={() => {}}
-        validationSchema={validationSchema}
-      >
-        {() => (
-          <FormContainer>
-            <LoginFields resetError={() => setMessage(null)} />
-            <Divider height="1em" />
-            {message && <LoginErrorInformer {...message} />}
-            <Divider height="2em" />
-            <UserLoginButton setErrorMessage={setMessage} />
-            <Divider height="1em" />
-            <ButtonCommon
-              type="button"
-              variant={BUTTON_VARIANTS.FLAT}
-              text="Click here to register"
-              onClick={() =>
-                navigate(ROUTES_NAMES_GENERATOR.AUTH(AUTH_SCREENS.register), {
-                  replace: true,
-                })
-              }
-            />
-          </FormContainer>
-        )}
-      </Formik>
-    </>
+    <Formik
+      initialValues={{
+        [LOGIN_FIELDS_NAMES.name]: '',
+        [LOGIN_FIELDS_NAMES.password]: '',
+      }}
+      onSubmit={() => {}}
+      validationSchema={validationSchema}
+    >
+      {() => (
+        <FormContainer>
+          <LoginFields resetError={() => setMessage(null)} />
+          <Divider height="1em" />
+          {message && <LoginErrorInformer {...message} />}
+          <Divider height="2em" />
+          <LoginButton setErrorMessage={setMessage} />
+          <Divider height="1em" />
+          <ButtonCommon
+            type="button"
+            variant={BUTTON_VARIANTS.FLAT}
+            text="Click here to register"
+            onClick={() =>
+              navigate(ROUTES_NAMES_GENERATOR.AUTH(AUTH_SCREENS.register), {
+                replace: true,
+              })
+            }
+          />
+        </FormContainer>
+      )}
+    </Formik>
   );
 };
 

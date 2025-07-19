@@ -19,7 +19,8 @@ interface Props {
     variant: 'error' | 'warning' | 'success';
   }) => void;
 }
-const UserLoginButton: FC<Props> = ({ setErrorMessage }) => {
+
+const LoginButton: FC<Props> = ({ setErrorMessage }) => {
   const { values, isValid, isSubmitting, errors } =
     useFormikContext<Record<LoginFieldsNames, string>>();
   console.log(errors);
@@ -82,4 +83,4 @@ const UserLoginButton: FC<Props> = ({ setErrorMessage }) => {
   );
 };
 
-export default UserLoginButton;
+export default LoginButton;
