@@ -1,0 +1,9 @@
+mutation checkAccountNickAvailability($name: String!) {
+  account {
+    general {
+      checkNameAvailability(input: { name: $name }) {
+        isAvailable
+      }
+    }
+  }
+}

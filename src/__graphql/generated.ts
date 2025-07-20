@@ -1,21 +1,35 @@
-import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as ApolloReactHooks from '@apollo/client';
+import { gql } from '@apollo/client';
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
 };
 
 export type AccountAuthMutations = {
@@ -24,11 +38,9 @@ export type AccountAuthMutations = {
   register: AccountAuthedOutput;
 };
 
-
 export type AccountAuthMutationsLoginArgs = {
   input: AccountLoginInput;
 };
-
 
 export type AccountAuthMutationsRegisterArgs = {
   input: AccountRegisterInput;
@@ -45,7 +57,6 @@ export type AccountGeneralMutations = {
   __typename?: 'AccountGeneralMutations';
   checkNameAvailability: AccountNameAvailabilityOutput;
 };
-
 
 export type AccountGeneralMutationsCheckNameAvailabilityArgs = {
   input: CheckAccountNameAvailabilityInput;
@@ -106,7 +117,6 @@ export type CexAccountAuthMutations = {
   login: CexAccountJwtOutput;
 };
 
-
 export type CexAccountAuthMutationsLoginArgs = {
   input: CexAccountLoginInput;
 };
@@ -115,7 +125,6 @@ export type CexAccountGeneralMutations = {
   __typename?: 'CexAccountGeneralMutations';
   checkNameAvailability: CexAccountNameAvailabilityOutput;
 };
-
 
 export type CexAccountGeneralMutationsCheckNameAvailabilityArgs = {
   input: CheckCexAccountNameAvailabilityInput;
@@ -140,11 +149,9 @@ export type CexAccountManageMutations = {
   delete: IdOutput;
 };
 
-
 export type CexAccountManageMutationsChangeNameArgs = {
   input: ChangeCexAccountNameInput;
 };
-
 
 export type CexAccountManageMutationsCreateArgs = {
   input: CreateCexAccountInput;
@@ -176,7 +183,7 @@ export type CexAccountQueries = {
 
 export enum CexName {
   Binance = 'BINANCE',
-  Bybit = 'BYBIT'
+  Bybit = 'BYBIT',
 }
 
 export type ChangeCexAccountNameInput = {
@@ -222,7 +229,9 @@ export type CreateDcaBotInput = {
 
 export type CreateDcaBotPriceDropTriggerInput = {
   activeEffect: DcaBotTriggerActiveEffect;
-  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  activeEffectForbiddenBuySymbols?: InputMaybe<
+    Array<Scalars['String']['input']>
+  >;
   botId: Scalars['Int']['input'];
   executionPrice: Scalars['Float']['input'];
   position: DcaBotTriggerPosition;
@@ -231,7 +240,9 @@ export type CreateDcaBotPriceDropTriggerInput = {
 
 export type CreateDcaBotTrailingPriceDropTriggerInput = {
   activeEffect: DcaBotTriggerActiveEffect;
-  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  activeEffectForbiddenBuySymbols?: InputMaybe<
+    Array<Scalars['String']['input']>
+  >;
   botId: Scalars['Int']['input'];
   percentageDrop: Scalars['Float']['input'];
   position: DcaBotTriggerPosition;
@@ -252,26 +263,21 @@ export type DcaBotManageMutations = {
   updateConfig: BotDcaCombinedIdOutput;
 };
 
-
 export type DcaBotManageMutationsCreateArgs = {
   input: CreateDcaBotInput;
 };
-
 
 export type DcaBotManageMutationsPauseArgs = {
   input: DcaBotIdInput;
 };
 
-
 export type DcaBotManageMutationsResumeArgs = {
   input: DcaBotIdInput;
 };
 
-
 export type DcaBotManageMutationsStopArgs = {
   input: DcaBotIdInput;
 };
-
 
 export type DcaBotManageMutationsUpdateConfigArgs = {
   input: DcaUpdateBuyConfigInput;
@@ -289,11 +295,9 @@ export type DcaBotPriceDropTriggerManageMutations = {
   update: CreateBotDcaPriceDropTriggerOutput;
 };
 
-
 export type DcaBotPriceDropTriggerManageMutationsCreateArgs = {
   input: CreateDcaBotPriceDropTriggerInput;
 };
-
 
 export type DcaBotPriceDropTriggerManageMutationsUpdateArgs = {
   input: UpdateDcaBotPriceDropTriggerInput;
@@ -305,11 +309,9 @@ export type DcaBotTrailingPriceDropTriggerManageMutations = {
   update: CreateBotDcaPriceDropTriggerOutput;
 };
 
-
 export type DcaBotTrailingPriceDropTriggerManageMutationsCreateArgs = {
   input: CreateDcaBotTrailingPriceDropTriggerInput;
 };
-
 
 export type DcaBotTrailingPriceDropTriggerManageMutationsUpdateArgs = {
   input: UpdateDcaBotTrailingPriceDropTriggerInput;
@@ -318,7 +320,7 @@ export type DcaBotTrailingPriceDropTriggerManageMutationsUpdateArgs = {
 export enum DcaBotTriggerActiveEffect {
   ForbiddenDcaBuySession = 'FORBIDDEN_DCA_BUY_SESSION',
   ForbiddenDcaSymbolsListBuyOrders = 'FORBIDDEN_DCA_SYMBOLS_LIST_BUY_ORDERS',
-  None = 'NONE'
+  None = 'NONE',
 }
 
 export type DcaBotTriggerManageMutations = {
@@ -327,7 +329,6 @@ export type DcaBotTriggerManageMutations = {
   priceDrop: DcaBotPriceDropTriggerManageMutations;
   trailingPriceDrop: DcaBotTrailingPriceDropTriggerManageMutations;
 };
-
 
 export type DcaBotTriggerManageMutationsCancelArgs = {
   input: CancelDcaBotTriggerInput;
@@ -341,7 +342,7 @@ export type DcaBotTriggerMutations = {
 export enum DcaBotTriggerPosition {
   AfterBuy = 'AFTER_BUY',
   AfterInitialBuy = 'AFTER_INITIAL_BUY',
-  Immediate = 'IMMEDIATE'
+  Immediate = 'IMMEDIATE',
 }
 
 export type DcaBuyConfigInput = {
@@ -383,7 +384,9 @@ export type DcaInitialBuySymbolConfigInput = {
 
 export type DcaInitialTriggersInput = {
   priceDropTriggers?: InputMaybe<Array<DcaSymbolPriceDropTriggerInput>>;
-  trailingPriceDropTriggers?: InputMaybe<Array<DcaTrailingPriceDropTriggerInput>>;
+  trailingPriceDropTriggers?: InputMaybe<
+    Array<DcaTrailingPriceDropTriggerInput>
+  >;
 };
 
 export enum DcaMultiplierSchema {
@@ -405,12 +408,14 @@ export enum DcaMultiplierSchema {
    * - e.g. step 2 => 100, 200 (100x2), 600((100+200)x2), 1800((100+200+600)x2) ...
    * - *multiply sum of all prev order amounts
    */
-  Martingale = 'MARTINGALE'
+  Martingale = 'MARTINGALE',
 }
 
 export type DcaSymbolPriceDropTriggerInput = {
   activeEffect: DcaBotTriggerActiveEffect;
-  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  activeEffectForbiddenBuySymbols?: InputMaybe<
+    Array<Scalars['String']['input']>
+  >;
   executionPrice: Scalars['Float']['input'];
   position: DcaBotTriggerPosition;
   symbol: Scalars['String']['input'];
@@ -418,7 +423,9 @@ export type DcaSymbolPriceDropTriggerInput = {
 
 export type DcaTrailingPriceDropTriggerInput = {
   activeEffect: DcaBotTriggerActiveEffect;
-  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  activeEffectForbiddenBuySymbols?: InputMaybe<
+    Array<Scalars['String']['input']>
+  >;
   percentageDrop: Scalars['Float']['input'];
   position: DcaBotTriggerPosition;
   symbol: Scalars['String']['input'];
@@ -428,7 +435,7 @@ export enum DcaUnit {
   /** e.g. BTC */
   BaseCoin = 'BASE_COIN',
   /** e.g. USDT */
-  QuoteCoin = 'QUOTE_COIN'
+  QuoteCoin = 'QUOTE_COIN',
 }
 
 export type DcaUpdateBuyConfigInput = {
@@ -463,7 +470,9 @@ export type QueryRoot = {
 
 export type UpdateDcaBotPriceDropTriggerInput = {
   activeEffect?: InputMaybe<DcaBotTriggerActiveEffect>;
-  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  activeEffectForbiddenBuySymbols?: InputMaybe<
+    Array<Scalars['String']['input']>
+  >;
   executionPrice?: InputMaybe<Scalars['Float']['input']>;
   position?: InputMaybe<DcaBotTriggerPosition>;
   triggerId: Scalars['Int']['input'];
@@ -471,7 +480,9 @@ export type UpdateDcaBotPriceDropTriggerInput = {
 
 export type UpdateDcaBotTrailingPriceDropTriggerInput = {
   activeEffect?: InputMaybe<DcaBotTriggerActiveEffect>;
-  activeEffectForbiddenBuySymbols?: InputMaybe<Array<Scalars['String']['input']>>;
+  activeEffectForbiddenBuySymbols?: InputMaybe<
+    Array<Scalars['String']['input']>
+  >;
   percentageDrop?: InputMaybe<Scalars['Float']['input']>;
   position?: InputMaybe<DcaBotTriggerPosition>;
   triggerId: Scalars['Int']['input'];
@@ -482,8 +493,21 @@ export type AccountLoginMutationVariables = Exact<{
   password: Scalars['String']['input'];
 }>;
 
-
-export type AccountLoginMutation = { __typename?: 'MutationRoot', account: { __typename?: 'AccountMutations', auth: { __typename?: 'AccountAuthMutations', login: { __typename?: 'AccountAuthedOutput', id: number, nick: string, jwtToken: string } } } };
+export type AccountLoginMutation = {
+  __typename?: 'MutationRoot';
+  account: {
+    __typename?: 'AccountMutations';
+    auth: {
+      __typename?: 'AccountAuthMutations';
+      login: {
+        __typename?: 'AccountAuthedOutput';
+        id: number;
+        nick: string;
+        jwtToken: string;
+      };
+    };
+  };
+};
 
 export type AccountRegisterMutationVariables = Exact<{
   name: Scalars['String']['input'];
@@ -492,24 +516,57 @@ export type AccountRegisterMutationVariables = Exact<{
   registerCode: Scalars['String']['input'];
 }>;
 
+export type AccountRegisterMutation = {
+  __typename?: 'MutationRoot';
+  account: {
+    __typename?: 'AccountMutations';
+    auth: {
+      __typename?: 'AccountAuthMutations';
+      register: {
+        __typename?: 'AccountAuthedOutput';
+        id: number;
+        nick: string;
+        jwtToken: string;
+      };
+    };
+  };
+};
 
-export type AccountRegisterMutation = { __typename?: 'MutationRoot', account: { __typename?: 'AccountMutations', auth: { __typename?: 'AccountAuthMutations', register: { __typename?: 'AccountAuthedOutput', id: number, nick: string, jwtToken: string } } } };
+export type CheckAccountNickAvailabilityMutationVariables = Exact<{
+  name: Scalars['String']['input'];
+}>;
 
+export type CheckAccountNickAvailabilityMutation = {
+  __typename?: 'MutationRoot';
+  account: {
+    __typename?: 'AccountMutations';
+    general: {
+      __typename?: 'AccountGeneralMutations';
+      checkNameAvailability: {
+        __typename?: 'AccountNameAvailabilityOutput';
+        isAvailable: boolean;
+      };
+    };
+  };
+};
 
 export const AccountLoginDocument = gql`
-    mutation accountLogin($name: String!, $password: String!) {
-  account {
-    auth {
-      login(input: {name: $name, password: $password}) {
-        id
-        nick
-        jwtToken
+  mutation accountLogin($name: String!, $password: String!) {
+    account {
+      auth {
+        login(input: { name: $name, password: $password }) {
+          id
+          nick
+          jwtToken
+        }
       }
     }
   }
-}
-    `;
-export type AccountLoginMutationFn = Apollo.MutationFunction<AccountLoginMutation, AccountLoginMutationVariables>;
+`;
+export type AccountLoginMutationFn = Apollo.MutationFunction<
+  AccountLoginMutation,
+  AccountLoginMutationVariables
+>;
 
 /**
  * __useAccountLoginMutation__
@@ -529,29 +586,56 @@ export type AccountLoginMutationFn = Apollo.MutationFunction<AccountLoginMutatio
  *   },
  * });
  */
-export function useAccountLoginMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AccountLoginMutation, AccountLoginMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return ApolloReactHooks.useMutation<AccountLoginMutation, AccountLoginMutationVariables>(AccountLoginDocument, options);
-      }
-export type AccountLoginMutationHookResult = ReturnType<typeof useAccountLoginMutation>;
-export type AccountLoginMutationResult = Apollo.MutationResult<AccountLoginMutation>;
-export type AccountLoginMutationOptions = Apollo.BaseMutationOptions<AccountLoginMutation, AccountLoginMutationVariables>;
+export function useAccountLoginMutation(
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    AccountLoginMutation,
+    AccountLoginMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return ApolloReactHooks.useMutation<
+    AccountLoginMutation,
+    AccountLoginMutationVariables
+  >(AccountLoginDocument, options);
+}
+export type AccountLoginMutationHookResult = ReturnType<
+  typeof useAccountLoginMutation
+>;
+export type AccountLoginMutationResult =
+  Apollo.MutationResult<AccountLoginMutation>;
+export type AccountLoginMutationOptions = Apollo.BaseMutationOptions<
+  AccountLoginMutation,
+  AccountLoginMutationVariables
+>;
 export const AccountRegisterDocument = gql`
-    mutation accountRegister($name: String!, $password: String!, $passwordConfirm: String!, $registerCode: String!) {
-  account {
-    auth {
-      register(
-        input: {name: $name, password: $password, passwordConfirm: $passwordConfirm, registerCode: $registerCode}
-      ) {
-        id
-        nick
-        jwtToken
+  mutation accountRegister(
+    $name: String!
+    $password: String!
+    $passwordConfirm: String!
+    $registerCode: String!
+  ) {
+    account {
+      auth {
+        register(
+          input: {
+            name: $name
+            password: $password
+            passwordConfirm: $passwordConfirm
+            registerCode: $registerCode
+          }
+        ) {
+          id
+          nick
+          jwtToken
+        }
       }
     }
   }
-}
-    `;
-export type AccountRegisterMutationFn = Apollo.MutationFunction<AccountRegisterMutation, AccountRegisterMutationVariables>;
+`;
+export type AccountRegisterMutationFn = Apollo.MutationFunction<
+  AccountRegisterMutation,
+  AccountRegisterMutationVariables
+>;
 
 /**
  * __useAccountRegisterMutation__
@@ -573,10 +657,79 @@ export type AccountRegisterMutationFn = Apollo.MutationFunction<AccountRegisterM
  *   },
  * });
  */
-export function useAccountRegisterMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AccountRegisterMutation, AccountRegisterMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return ApolloReactHooks.useMutation<AccountRegisterMutation, AccountRegisterMutationVariables>(AccountRegisterDocument, options);
+export function useAccountRegisterMutation(
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    AccountRegisterMutation,
+    AccountRegisterMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return ApolloReactHooks.useMutation<
+    AccountRegisterMutation,
+    AccountRegisterMutationVariables
+  >(AccountRegisterDocument, options);
+}
+export type AccountRegisterMutationHookResult = ReturnType<
+  typeof useAccountRegisterMutation
+>;
+export type AccountRegisterMutationResult =
+  Apollo.MutationResult<AccountRegisterMutation>;
+export type AccountRegisterMutationOptions = Apollo.BaseMutationOptions<
+  AccountRegisterMutation,
+  AccountRegisterMutationVariables
+>;
+export const CheckAccountNickAvailabilityDocument = gql`
+  mutation checkAccountNickAvailability($name: String!) {
+    account {
+      general {
+        checkNameAvailability(input: { name: $name }) {
+          isAvailable
+        }
       }
-export type AccountRegisterMutationHookResult = ReturnType<typeof useAccountRegisterMutation>;
-export type AccountRegisterMutationResult = Apollo.MutationResult<AccountRegisterMutation>;
-export type AccountRegisterMutationOptions = Apollo.BaseMutationOptions<AccountRegisterMutation, AccountRegisterMutationVariables>;
+    }
+  }
+`;
+export type CheckAccountNickAvailabilityMutationFn = Apollo.MutationFunction<
+  CheckAccountNickAvailabilityMutation,
+  CheckAccountNickAvailabilityMutationVariables
+>;
+
+/**
+ * __useCheckAccountNickAvailabilityMutation__
+ *
+ * To run a mutation, you first call `useCheckAccountNickAvailabilityMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCheckAccountNickAvailabilityMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [checkAccountNickAvailabilityMutation, { data, loading, error }] = useCheckAccountNickAvailabilityMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useCheckAccountNickAvailabilityMutation(
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    CheckAccountNickAvailabilityMutation,
+    CheckAccountNickAvailabilityMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return ApolloReactHooks.useMutation<
+    CheckAccountNickAvailabilityMutation,
+    CheckAccountNickAvailabilityMutationVariables
+  >(CheckAccountNickAvailabilityDocument, options);
+}
+export type CheckAccountNickAvailabilityMutationHookResult = ReturnType<
+  typeof useCheckAccountNickAvailabilityMutation
+>;
+export type tyMutationResult =
+  Apollo.MutationResult<CheckAccountNickAvailabilityMutation>;
+export type CheckAccountNickAvailabilityMutationOptions =
+  Apollo.BaseMutationOptions<
+    CheckAccountNickAvailabilityMutation,
+    CheckAccountNickAvailabilityMutationVariables
+  >;

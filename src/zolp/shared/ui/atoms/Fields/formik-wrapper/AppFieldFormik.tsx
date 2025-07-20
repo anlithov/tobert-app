@@ -18,6 +18,7 @@ const AppFormikField = <
   R extends FieldBaseTypes,
 >({
   formikName,
+  errors,
   onBlur: onBlurAddon,
   onChange: onChangeAddon,
   inputTextAlign,
@@ -30,7 +31,7 @@ const AppFormikField = <
     <Field name={formikName}>
       {({
         field: { name, onBlur, onChange, value },
-        form: { errors, touched, setFieldTouched },
+        form: { errors: formErrors, touched, setFieldTouched },
       }: FieldAttributes<FieldProps<string | number, T>>) => {
         const nameFields: string[] = [];
         if (name.includes('.')) {
@@ -41,7 +42,9 @@ const AppFormikField = <
           nameFields.push(name);
         }
         const errorField =
-          nameFields[0] in errors ? getDataFromObject(errors, nameFields) : '';
+          nameFields[0] in formErrors
+            ? getDataFromObject(formErrors, nameFields)
+            : '';
         const hasError = !!(
           nameFields[0] in touched &&
           getDataFromObject(touched, nameFields) &&
@@ -61,7 +64,14 @@ const AppFormikField = <
           onBlur(name);
         };
 
-        const errorData = (hasError ? [errorField] : []) as string[] | [];
+        let errorData: string[];
+        if (errors?.length) {
+          errorData = errors;
+        } else if (hasError) {
+          errorData = [errorField];
+        } else {
+          errorData = [];
+        }
 
         const actualValue = typeof value === 'number' || 'string' ? value : '';
 

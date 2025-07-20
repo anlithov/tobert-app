@@ -5,7 +5,7 @@ import {
   LoadingMessage,
   ThemeToggleContainer,
 } from './LoadingScreen.styled';
-import AccountLogOutButton from '../../entities/Account/components/AccountLogOutButton/AccountLogOutButton.tsx';
+import AccountLogOutButton from '../../features/auth/logout/ui/AccountLogOutButton/AccountLogOutButton.tsx';
 import HeartBeatLoader from '../../shared/ui/molecules/Logo/HeartBeatLoader/HeartBeatLoader.tsx';
 
 interface Props {
