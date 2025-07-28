@@ -1,0 +1,9 @@
+mutation checkCexAccountName($name: String!) {
+  cexAccount {
+    general {
+      checkNameAvailability(input: { name: $name }) {
+        isAvailable
+      }
+    }
+  }
+}

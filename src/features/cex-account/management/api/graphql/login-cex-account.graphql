@@ -1,0 +1,15 @@
+mutation loginCexAccount($input: CexAccountLoginInput!) {
+  cexAccount {
+    auth {
+      login(input: $input) {
+        meta {
+          accountId
+          cexAccountId
+          name
+          cexName
+        }
+        jwtToken
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { Field, FieldAttributes, FieldProps } from 'formik';
 import { FieldBaseTypes } from '../base/AppField.types.ts';
 import AppField from '../base/AppField.tsx';
 import getDataFromObject from './helpers/getDataFromObject.ts';
+import { FieldVariants } from '../libs/constants/button.variants.ts';
 
 export interface FieldFormikBaseTypes<R extends FieldBaseTypes> {
   label?: string;
@@ -10,7 +11,7 @@ export interface FieldFormikBaseTypes<R extends FieldBaseTypes> {
   formikName: string;
   inputTextAlign?: 'center' | 'right' | 'left';
   placeholder?: ReactNode;
-  variant?: 'outlined' | 'filled';
+  variant?: FieldVariants;
   Component?: FC<R>;
 }
 const AppFormikField = <

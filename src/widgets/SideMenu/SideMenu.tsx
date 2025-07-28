@@ -1,12 +1,10 @@
-import React, { FC, ReactNode, useEffect } from 'react';
+import React, { FC, ReactNode } from 'react';
 import {
   MainNavigationContainer,
   SideMenuContainer,
 } from './SideMenu.styled.ts';
 import { Link } from 'react-router-dom';
 import SideMenuItem from './ui/SideMenuItem.tsx';
-import { useRecoilState } from 'recoil';
-import { atomSideMenuVisibility } from './libs/store/side-,menu.atom.ts';
 
 export interface SideMenuItemData {
   link: string;
@@ -16,27 +14,11 @@ export interface SideMenuItemData {
 }
 
 interface Props {
-  hiddenMode?: boolean;
   navigationItems: SideMenuItemData[];
 }
-const SideMenu: FC<Props> = ({ navigationItems, hiddenMode }) => {
-  const [visible, setVisible] = useRecoilState(atomSideMenuVisibility);
-  useEffect(() => {
-    setVisible(true);
-    setTimeout(() => {
-      setVisible(false);
-    }, 2000);
-  }, []);
-
+const SideMenu: FC<Props> = ({ navigationItems }) => {
   return (
-    <SideMenuContainer
-      onMouseLeave={() => {
-        setVisible(false);
-      }}
-      className={`${hiddenMode ? 'hidden-mode' : ''} ${
-        visible ? 'active' : ''
-      }`}
-    >
+    <SideMenuContainer>
       <MainNavigationContainer>
         {navigationItems.map((navItem) => {
           const icon = <SideMenuItem navItem={navItem} />;

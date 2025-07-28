@@ -1,0 +1,9 @@
+mutation changeCexAccountName($input: ChangeCexAccountNameInput!) {
+  cexAccount {
+    manage {
+      changeName(input: $input) {
+        cexAccountId
+      }
+    }
+  }
+}

@@ -3,22 +3,18 @@ import * as Styled from './ProtectedLayout.styled.ts';
 import { PageContainer, PageContent } from './ProtectedLayout.styled.ts';
 import ProtectedGuard from '../../guards/ProtectedGuard.tsx';
 import { Outlet } from 'react-router-dom';
-import { useProtectedStatesProvider } from './libs/hooks/use-protected-states-provider.hook.ts';
+import Header from '../../../widgets/Header/Header.tsx';
 
 interface Props extends PropsWithChildren {
   sideMenuHiddenMode?: boolean;
 }
 const ProtectedLayout: FC<Props> = ({ children, sideMenuHiddenMode }) => {
-  useProtectedStatesProvider();
-
   return (
     <ProtectedGuard>
       <Styled.Container>
+        <Header />
         <PageContainer>
-          {/* <SideMenu
-            navigationItems={accountNavigationItems}
-            hiddenMode={sideMenuHiddenMode}
-          />*/}
+          {/*<SideMenu navigationItems={[]} />*/}
           <PageContent
             className={sideMenuHiddenMode ? 'side-menu-hidden-mode' : ''}
           >

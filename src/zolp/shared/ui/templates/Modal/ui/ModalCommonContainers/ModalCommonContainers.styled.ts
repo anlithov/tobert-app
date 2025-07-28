@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ContainerMainSecondary } from '../../../../atoms/Containers/ContainerCover.tsx';
 import { addAlpha } from '../../../../../lib/utils/add-alpha-opacity.util.ts';
 import { modalCommonContainersTheme } from './ModalCommonContainers.theme.ts';
-import { globalTheme } from '../../../app/styles/global.theme.ts';
+import { globalTheme } from '../../../../../../app/styles/global.theme.ts';
 
 export const ModalContainer = styled(ContainerMainSecondary)`
   display: flex;

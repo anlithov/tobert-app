@@ -12,6 +12,12 @@ export const ContainerMainSecondary = styled(Container)<{
   minWidth?: string;
 }>`
   background: ${({ theme }) => containerTheme(theme).containerMainBackground};
+  &.hoverable {
+    cursor: pointer;
+    &:hover {
+      background: ${({ theme }) => addAlpha(theme.palette.primary500, 0.1)};
+    }
+  }
 `;
 export const ContainerMainOutlined = styled(Container)<{
   padding?: string;
@@ -23,6 +29,7 @@ export const ContainerMainOutlined = styled(Container)<{
     ${({ theme }) => containerTheme(theme).containerMainBackground};
   &.hoverable {
     &:hover {
+      cursor: pointer;
       background: ${({ theme }) => addAlpha(theme.palette.primary500, 0.1)};
     }
   }
