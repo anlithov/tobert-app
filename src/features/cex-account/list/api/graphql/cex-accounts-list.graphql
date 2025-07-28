@@ -1,0 +1,13 @@
+query cexAccountsList($input: [CexAccountAndJwt!]!) {
+  cexAccount {
+    list(input: $input) {
+      accountId
+      cexAccountId
+      cexName
+      name
+      isJwtValid
+      apiKey
+      image
+    }
+  }
+}

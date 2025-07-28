@@ -1,0 +1,9 @@
+mutation deleteCexAccount($input: Int!) {
+  cexAccount {
+    manage {
+      delete(cexAccountId: $input) {
+        cexAccountId
+      }
+    }
+  }
+}

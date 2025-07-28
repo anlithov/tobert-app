@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { RecoilState, useRecoilState, useRecoilValue } from 'recoil';
+import { PrimitiveAtom, useAtom, useAtomValue } from 'jotai';
 
 const parseValue = <T>(
   value: T,
@@ -27,26 +27,26 @@ const parseValue = <T>(
   return returnValue;
 };
 
-export const useDebounceRecoil = <T>(
+export const useDebounceJotai = <T>(
   {
     atomLoading,
     atomDebouncedValue,
     atomToBeDebouncedValue,
   }: {
-    atomLoading: RecoilState<boolean>;
-    atomDebouncedValue: RecoilState<T>;
-    atomToBeDebouncedValue: RecoilState<T>;
+    atomLoading: PrimitiveAtom<boolean>;
+    atomDebouncedValue: PrimitiveAtom<T>;
+    atomToBeDebouncedValue: PrimitiveAtom<T>;
   },
   delay: number,
   callback?: () => void,
 ) => {
-  const value = useRecoilValue(atomToBeDebouncedValue);
+  const value = useAtomValue(atomToBeDebouncedValue);
   const valueToString: T | null | string | number =
     typeof value === 'number' || 'string' ? value : JSON.stringify(value);
-  const [isDebouncing, setIsDebouncing] = useRecoilState<boolean>(atomLoading);
+  const [isDebouncing, setIsDebouncing] = useAtom(atomLoading);
   const [debouncedValue, setDebouncedValue] = useState(valueToString);
   const [debouncedValueFinal, setDebouncedValueFinal] =
-    useRecoilState(atomDebouncedValue);
+    useAtom(atomDebouncedValue);
   // Save old value
   const oldValueRef = useRef<T | null | string | number>(valueToString);
 

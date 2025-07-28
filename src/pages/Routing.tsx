@@ -5,6 +5,7 @@ import Page404 from './404/Page404.tsx';
 import { ROUTES_NAMES } from '../shared/lib/constants/routes-names.const.ts';
 import AuthToLoginRedirect from './AuthToLoginRedirector.tsx';
 import AuthPage from './auth/AuthPage.tsx';
+import CexAccountsPage from './cex-accounts/CexAccountsPage.tsx';
 
 export const Routing = () => {
   return (
@@ -14,6 +15,7 @@ export const Routing = () => {
       <Route index Component={AuthToLoginRedirect} />
       <Route path={ROUTES_NAMES.AUTH} Component={AuthToLoginRedirect} />
       <Route path={ROUTES_NAMES.AUTH_DYNAMIC} Component={AuthPage} />
+      <Route path={ROUTES_NAMES.CEX_ACCOUNTS} Component={CexAccountsPage} />
     </Routes>
   );
 };

@@ -29,7 +29,7 @@ const useModalStore = create<ModalStore>()((set) => ({
 }));
 
 interface SetNewModal<T> {
-  id?: string;
+  modalId?: string;
   component: FC<T>;
   props: Omit<T, 'onClose' | 'modalId' | 'setDisableBackgroundClick'>;
   onAddonClickBackground?: () => void;
@@ -88,7 +88,8 @@ export const useModal = () => {
   const addModal = async <T extends ModalProps>(
     newModalParams: SetNewModal<T>,
   ) => {
-    const modalId = newModalParams?.id || 'modal' + generateRandomNDigits(8);
+    const modalId =
+      newModalParams?.modalId || 'modal' + generateRandomNDigits(8);
 
     let newModalsState = { ...modals };
 

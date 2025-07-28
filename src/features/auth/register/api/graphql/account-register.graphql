@@ -14,7 +14,7 @@ mutation accountRegister(
           registerCode: $registerCode
         }
       ) {
-        id
+        accountId
         nick
         jwtToken
       }

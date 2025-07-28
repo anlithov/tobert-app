@@ -53,8 +53,6 @@ const AppField: FC<AppFieldProps> = ({
     custompaddingtop: placeholder && variant === 'filled' ? '0.9em' : '0',
   };
 
-  console.log(errors);
-
   return (
     <Container>
       <InputContainer

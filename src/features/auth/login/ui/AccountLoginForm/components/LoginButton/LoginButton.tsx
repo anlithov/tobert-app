@@ -21,7 +21,7 @@ interface Props {
 }
 
 const LoginButton: FC<Props> = ({ setErrorMessage }) => {
-  const { values, isValid, isSubmitting, errors } =
+  const { values, isValid, isSubmitting } =
     useFormikContext<Record<LoginFieldsNames, string>>();
 
   const intl = useIntl();

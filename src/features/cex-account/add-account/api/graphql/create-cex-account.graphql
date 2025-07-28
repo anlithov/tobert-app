@@ -1,0 +1,15 @@
+mutation createCexAccount($input: CreateCexAccountInput!) {
+  cexAccount {
+    manage {
+      create(input: $input) {
+        meta {
+          accountId
+          cexAccountId
+          name
+          cexName
+        }
+        jwtToken
+      }
+    }
+  }
+}

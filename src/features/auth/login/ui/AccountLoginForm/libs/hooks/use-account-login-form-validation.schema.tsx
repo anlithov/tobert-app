@@ -2,6 +2,7 @@ import * as yup from 'yup';
 import { useIntl } from 'react-intl';
 import { accountLoginFormMessages } from '../messages/account-login-form.messages.ts';
 import { LOGIN_FIELDS_NAMES } from '../constants/login-field-names.const.ts';
+import { PASSWORD_REGEX } from '../../../../../../../shared/lib/constants/regexes.ts';
 
 export const useAccountLoginFormValidationSchema = () => {
   const intl = useIntl();
@@ -11,7 +12,7 @@ export const useAccountLoginFormValidationSchema = () => {
     [LOGIN_FIELDS_NAMES.password]: yup
       .string()
       .matches(
-        /(?=(?:.*[a-z]){3,})(?=(?:.*[A-Z]){2,})(?=(?:.*\d){2,})(?=.*[!@#$%^&*()\-_+\.]).{8,30}/,
+        PASSWORD_REGEX,
         intl.formatMessage(accountLoginFormMessages.passwordConditionsRequired),
       )
       .required(),

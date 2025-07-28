@@ -9,7 +9,7 @@ import {
 } from './ModalDialog.styled.ts';
 import { BUTTON_VARIANTS } from '../../../../atoms/Button/libs/constants/button.variants.ts';
 import Divider from '../../../../atoms/Divider/Divider.tsx';
-import { ModalProps } from '../../lib/hook/use-modal.hook.ts';
+import { ModalProps, useModal } from '../../lib/hook/use-modal.hook.ts';
 import { ButtonCommon } from '../../../../atoms/Button/ButtonCommon/ButtonCommon.tsx';
 
 interface Props extends ModalProps {
@@ -35,6 +35,8 @@ const ModalDialog: FC<Props> = ({
   onClickCancel,
   onClickAccept,
 }) => {
+  const { closeModal } = useModal();
+
   return (
     <ModalContainer width={width}>
       <Divider height="1em" />
@@ -50,7 +52,12 @@ const ModalDialog: FC<Props> = ({
         <ButtonCommon
           height="5em"
           variant={BUTTON_VARIANTS.FLAT}
-          onClick={onClickCancel}
+          onClick={
+            onClickCancel ??
+            (async () => {
+              await closeModal(modalId);
+            })
+          }
         >
           {titleCancel ?? <span>Cancel</span>}
         </ButtonCommon>
