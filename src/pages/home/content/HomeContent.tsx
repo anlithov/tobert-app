@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonTitle, Container, Header, Inner } from './HomeContent.styled.ts';
 import Divider from '../../../zolp/shared/ui/atoms/Divider/Divider.tsx';
-import BotsPage from '../../../features/bot/ui/BotsPage/BotsPage.tsx';
+import MyBots from './components/MyBots/MyBots.tsx';
 import ButtonIconed from '../../../zolp/shared/ui/atoms/Button/ButtonIconed/ButtonIconed.tsx';
 import { FaPlus } from 'react-icons/fa';
 
@@ -18,7 +18,7 @@ const HomeContent = () => {
           </ButtonIconed>
         </Header>
         <Divider height="2em" />
-        <BotsPage />
+        <MyBots />
       </Inner>
     </Container>
   );

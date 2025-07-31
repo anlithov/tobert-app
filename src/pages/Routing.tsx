@@ -9,6 +9,7 @@ import CexAccountsPage from './cex-accounts/CexAccountsPage.tsx';
 import ProtectedLayout from '../app/layouts/ProtectedLayout/ProtectedLayout.tsx';
 import GuestLayout from '../app/layouts/GuestLayout/GuestLayout.tsx';
 import HomePage from './home/HomePage.tsx';
+import CreateBotPage from './create-bot/CreateBotPage.tsx';
 
 export const Routing = () => {
   return (
@@ -23,6 +24,7 @@ export const Routing = () => {
       <Route element={<ProtectedLayout />}>
         <Route path={ROUTES_NAMES.HOME} Component={HomePage} />
         <Route path={ROUTES_NAMES.CEX_ACCOUNTS} Component={CexAccountsPage} />
+        <Route path={ROUTES_NAMES.CREATE_BOT} Component={CreateBotPage} />
       </Route>
     </Routes>
   );

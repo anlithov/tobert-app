@@ -16,6 +16,7 @@ export const ROUTES_NAMES = {
   //
   HOME: '/home',
   CEX_ACCOUNTS: '/cex-accounts',
+  CREATE_BOT: '/create-bot',
 };
 
 export const ROUTES_NAMES_GENERATOR = {

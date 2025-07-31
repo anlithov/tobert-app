@@ -11,6 +11,7 @@ const ShowcaseButtons = () => {
         <ButtonCommon variant={BUTTON_VARIANTS.FILLED} text="Label" />
         <ButtonCommon variant={BUTTON_VARIANTS.FILLED} text="Example" />
         <ButtonCommon variant={BUTTON_VARIANTS.FILLED} text="Label" disabled />
+        <ButtonCommon variant={BUTTON_VARIANTS.FILLED} text="Label" />
       </BoxButtons>
       <BoxButtons>
         <h5>Outlined button</h5>
