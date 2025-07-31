@@ -6,9 +6,7 @@ import {
 
 export const useCexAccountsList = () => {
   const { jwtAccount } = useJwtStore();
-  const { list, cexJwts } = useCexJwtsStore();
-
-  console.log('list', list());
+  const { list } = useCexJwtsStore();
 
   const { data, loading } = useCexAccountsListQuery({
     variables: {

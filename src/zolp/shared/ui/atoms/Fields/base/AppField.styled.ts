@@ -54,11 +54,13 @@ export const InputContainer = styled.div<{
     color: ${(props) => appFieldTheme(props.theme).label};
     span {
       font-size: 1.6em !important;
+      line-height: 0;
       transition: 0.1s all;
     }
-    top: ${(props) => (props.height ? `calc(${props.height} * 0.42)` : '1em')};
+    top: ${(props) =>
+      props.height ? `calc((${props.height} - 1em) * 0.5)` : '1em'};
     padding: 0 0.5em;
-    line-height: 1.13em;
+    line-height: 0;
     font-weight: 400;
     transition: 0.1s all;
     cursor: text;

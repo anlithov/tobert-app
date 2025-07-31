@@ -21,38 +21,67 @@ export const Container = styled.div<{
   height: ${(props) => props?.height ?? '5.6em'};
   width: ${(props) => props?.width ?? '100%'};
   min-width: ${(props) => props?.minWidth};
-  border-radius: 2.8em;
+  border-radius: 1em;
   padding: ${(props) => props?.padding ?? '0.4em 1.6em'};
   user-select: none;
-  background-color: ${(props) =>
-    addAlpha(chipTheme(props.theme).backgroundFilledColor, 0.5)};
-  transition: 0.1s;
 
-  &.opened {
-    background-color: ${({ theme }) =>
-      chipTheme(theme).backgroundFilledActiveColor};
+  &.filled {
+    background-color: ${(props) =>
+      addAlpha(chipTheme(props.theme).backgroundFilledColor, 0.5)};
+    transition: 0.1s;
 
-    &:hover {
-      ${(props) =>
-        `background-color: ${
-          chipTheme(props.theme).backgroundFilledActiveColor
-        };`}
+    &.opened {
+      background-color: ${({ theme }) =>
+        chipTheme(theme).backgroundFilledActiveColor};
+
+      &:hover {
+        ${(props) =>
+          `background-color: ${
+            chipTheme(props.theme).backgroundFilledActiveColor
+          };`}
+      }
     }
-  }
 
-  &.active {
-    background-color: ${({ theme }) =>
-      addAlpha(chipTheme(theme).backgroundFilledActiveColor, 0.5)};
+    &.active {
+      background-color: ${({ theme }) =>
+        addAlpha(chipTheme(theme).backgroundFilledActiveColor, 0.5)};
+
+      &:hover {
+        background-color: ${({ theme }) =>
+          chipTheme(theme).backgroundFilledActiveColor};
+      }
+    }
 
     &:hover {
       background-color: ${({ theme }) =>
-        chipTheme(theme).backgroundFilledActiveColor};
+        addAlpha(chipTheme(theme).backgroundFilledHoverColor, 0.6)};
     }
   }
 
-  &:hover {
-    background-color: ${({ theme }) =>
-      addAlpha(chipTheme(theme).backgroundFilledHoverColor, 0.6)};
+  &.outlined {
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${(props) =>
+      addAlpha(chipTheme(props.theme).borderOutlinedColor, 0.3)};
+
+    background-color: ${(props) =>
+      addAlpha(chipTheme(props.theme).backgroundOutlinedColor, 0)};
+    transition: 0.1s;
+
+    &.active {
+      background-color: ${({ theme }) =>
+        addAlpha(chipTheme(theme).backgroundOutlinedActiveColor, 0.05)};
+
+      &:hover {
+        background-color: ${({ theme }) =>
+          addAlpha(chipTheme(theme).backgroundOutlinedActiveColor, 0.1)};
+      }
+    }
+
+    &:hover {
+      background-color: ${({ theme }) =>
+        addAlpha(chipTheme(theme).backgroundOutlinedHoverColor, 0.8)};
+    }
   }
 
   &.disabled {

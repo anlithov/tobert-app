@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { accordionTheme } from './Accordion.theme.ts';
+import { addAlpha } from '../../../lib/utils/add-alpha-opacity.util.ts';
 
 export const Container = styled.div<{
   width?: string;
@@ -7,10 +8,22 @@ export const Container = styled.div<{
 }>`
   width: ${({ width }) => width};
   padding: ${({ padding }) => padding};
-  background-color: ${({ theme }) => accordionTheme(theme).containerBackground};
   border-radius: 2em;
   &.hoverable {
     cursor: pointer;
+  }
+
+  &.filled {
+    background-color: ${({ theme }) =>
+      accordionTheme(theme).containerFilledBackground};
+  }
+
+  &.outlined {
+    background-color: ${({ theme }) =>
+      addAlpha(accordionTheme(theme).containerOutlinedBackground, 0.3)};
+    border: 1px solid
+      ${({ theme }) =>
+        addAlpha(accordionTheme(theme).containerOutlinedBorder, 0.4)};
   }
 `;
 

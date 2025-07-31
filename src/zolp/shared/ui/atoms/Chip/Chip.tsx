@@ -13,10 +13,12 @@ type Props = {
   width?: string;
   fontSize?: string;
   minWidth?: string;
+  variant?: 'filled' | 'outlined';
   pointerEvents?: string;
   LeftComponent?: ReactNode;
   RightComponent?: ReactNode;
   justifyContent?: 'center' | 'space-between';
+  ref?: React.Ref<HTMLDivElement>;
 };
 
 const Chip: FC<Props> = ({
@@ -25,7 +27,8 @@ const Chip: FC<Props> = ({
   disabled,
   active,
   placeholder,
-  padding,
+  variant,
+  padding = '0.8em 1.4em',
   fontSize = '1em',
   height,
   width,
@@ -34,9 +37,11 @@ const Chip: FC<Props> = ({
   LeftComponent,
   RightComponent,
   justifyContent = 'center',
+  ref,
 }) => {
   return (
     <Container
+      ref={ref}
       onClick={onClick}
       padding={padding}
       height={height}
@@ -44,10 +49,12 @@ const Chip: FC<Props> = ({
       pointerEvents={pointerEvents}
       justifyContent={justifyContent}
       width={width}
-      className={`${disabled ? 'disabled' : ''} ${active ? 'active' : ''}`}
+      className={`${disabled ? 'disabled' : ''} ${active ? 'active' : ''} ${variant ?? 'outlined'}`}
     >
       {LeftComponent}
-      <Label fontSize={fontSize} justifyContent={justifyContent}>{children ?? placeholder}</Label>
+      <Label fontSize={fontSize} justifyContent={justifyContent}>
+        {children ?? placeholder}
+      </Label>
       {RightComponent}
     </Container>
   );

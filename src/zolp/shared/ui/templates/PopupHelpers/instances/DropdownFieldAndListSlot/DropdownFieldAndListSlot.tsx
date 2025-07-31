@@ -45,7 +45,7 @@ const DropdownFieldAndListSlot: FC<Props> = ({
       onBlur();
     }
 
-    onClickProps.handleOpen();
+    onClickProps.onClick();
   };
 
   return (

@@ -85,16 +85,97 @@ export type AccountRegisterInput = {
   registerCode: Scalars['String']['input'];
 };
 
+export type BotCexMetaOutput = {
+  __typename?: 'BotCexMetaOutput';
+  cexAccountId: Scalars['Int']['output'];
+  cexName: CexName;
+  image?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+};
+
 export type BotDcaCombinedIdOutput = {
   __typename?: 'BotDcaCombinedIdOutput';
   accountRowId: Scalars['Int']['output'];
+  botDcaRowId: Scalars['Int']['output'];
   botRowId: Scalars['Int']['output'];
   cexAccountRowId: Scalars['Int']['output'];
 };
 
+export type BotInfoOutput = {
+  __typename?: 'BotInfoOutput';
+  botId: Scalars['Int']['output'];
+  cexMeta: BotCexMetaOutput;
+  name: Scalars['String']['output'];
+  statsInfo: BotStatsInfoOutput;
+  statusInfo: BotStatusInfoOutput;
+  symbolsStats: Array<BotSymbolStatsOutput>;
+  testMode: Scalars['Boolean']['output'];
+};
+
+export enum BotInternalStatus {
+  Created = 'CREATED',
+  Error = 'ERROR',
+  Paused = 'PAUSED',
+  Restarting = 'RESTARTING',
+  Running = 'RUNNING',
+  Stopped = 'STOPPED'
+}
+
 export type BotMutations = {
   __typename?: 'BotMutations';
   dca: DcaBotMutations;
+};
+
+export type BotQueries = {
+  __typename?: 'BotQueries';
+  dca: DcaBotQueries;
+  list: PageOutput;
+};
+
+
+export type BotQueriesListArgs = {
+  input: BotsListInput;
+};
+
+export type BotStatsInfoOutput = {
+  __typename?: 'BotStatsInfoOutput';
+  costBasis: Scalars['Float']['output'];
+  currentValue: Scalars['Float']['output'];
+  profitTaken: Scalars['Float']['output'];
+};
+
+export type BotStatusInfoOutput = {
+  __typename?: 'BotStatusInfoOutput';
+  status: BotInternalStatus;
+  timestamp: Scalars['String']['output'];
+};
+
+export type BotSymbolStatsOutput = {
+  __typename?: 'BotSymbolStatsOutput';
+  coinBalance: Scalars['Float']['output'];
+  currentValue: Scalars['Float']['output'];
+  image?: Maybe<Scalars['String']['output']>;
+  price: Scalars['Float']['output'];
+  symbol: Scalars['String']['output'];
+};
+
+export type BotsListInput = {
+  onlyCexAccountIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+  onlyStatuses?: InputMaybe<Array<BotInternalStatus>>;
+  page: Scalars['Int']['input'];
+  search?: InputMaybe<Scalars['String']['input']>;
+  size: Scalars['Int']['input'];
+  sorting?: InputMaybe<BotsListSorting>;
+};
+
+export enum BotsListSortBy {
+  CreationTime = 'CREATION_TIME',
+  Name = 'NAME'
+}
+
+export type BotsListSorting = {
+  by: BotsListSortBy;
+  value: OrderDirection;
 };
 
 export type CancelDcaBotTriggerInput = {
@@ -328,6 +409,11 @@ export type DcaBotPriceDropTriggerManageMutationsUpdateArgs = {
   input: UpdateDcaBotPriceDropTriggerInput;
 };
 
+export type DcaBotQueries = {
+  __typename?: 'DcaBotQueries';
+  ping: Scalars['String']['output'];
+};
+
 export type DcaBotTrailingPriceDropTriggerManageMutations = {
   __typename?: 'DcaBotTrailingPriceDropTriggerManageMutations';
   create: CreateBotDcaTrailingPriceDropTriggerOutput;
@@ -478,9 +564,22 @@ export type MutationRoot = {
   ping: Scalars['String']['output'];
 };
 
+export enum OrderDirection {
+  Asc = 'ASC',
+  Desc = 'DESC'
+}
+
+export type PageOutput = {
+  __typename?: 'PageOutput';
+  items: Array<BotInfoOutput>;
+  page: Scalars['Int']['output'];
+  size: Scalars['Int']['output'];
+};
+
 export type QueryRoot = {
   __typename?: 'QueryRoot';
   account: AccountQueries;
+  bot: BotQueries;
   cexAccount: CexAccountQueries;
   general: GeneralQueries;
   ping: Scalars['String']['output'];
@@ -526,6 +625,13 @@ export type CheckAccountNickAvailabilityMutationVariables = Exact<{
 
 
 export type CheckAccountNickAvailabilityMutation = { __typename?: 'MutationRoot', account: { __typename?: 'AccountMutations', general: { __typename?: 'AccountGeneralMutations', checkNameAvailability: { __typename?: 'AccountNameAvailabilityOutput', isAvailable: boolean } } } };
+
+export type BotsPageQueryVariables = Exact<{
+  input: BotsListInput;
+}>;
+
+
+export type BotsPageQuery = { __typename?: 'QueryRoot', bot: { __typename?: 'BotQueries', list: { __typename?: 'PageOutput', page: number, size: number, items: Array<{ __typename?: 'BotInfoOutput', botId: number, name: string, testMode: boolean, cexMeta: { __typename?: 'BotCexMetaOutput', name: string, cexAccountId: number, cexName: CexName, image?: string | null }, statsInfo: { __typename?: 'BotStatsInfoOutput', currentValue: number, costBasis: number, profitTaken: number }, statusInfo: { __typename?: 'BotStatusInfoOutput', status: BotInternalStatus, timestamp: string }, symbolsStats: Array<{ __typename?: 'BotSymbolStatsOutput', currentValue: number, image?: string | null, coinBalance: number, price: number, symbol: string }> }> } } };
 
 export type CheckCexAccountNameMutationVariables = Exact<{
   name: Scalars['String']['input'];
@@ -691,6 +797,76 @@ export function useCheckAccountNickAvailabilityMutation(baseOptions?: ApolloReac
 export type CheckAccountNickAvailabilityMutationHookResult = ReturnType<typeof useCheckAccountNickAvailabilityMutation>;
 export type CheckAccountNickAvailabilityMutationResult = Apollo.MutationResult<CheckAccountNickAvailabilityMutation>;
 export type CheckAccountNickAvailabilityMutationOptions = Apollo.BaseMutationOptions<CheckAccountNickAvailabilityMutation, CheckAccountNickAvailabilityMutationVariables>;
+export const BotsPageDocument = gql`
+    query botsPage($input: BotsListInput!) {
+  bot {
+    list(input: $input) {
+      page
+      size
+      items {
+        botId
+        name
+        testMode
+        cexMeta {
+          name
+          cexAccountId
+          cexName
+          image
+        }
+        statsInfo {
+          currentValue
+          costBasis
+          profitTaken
+        }
+        statusInfo {
+          status
+          timestamp
+        }
+        symbolsStats {
+          currentValue
+          image
+          coinBalance
+          price
+          symbol
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useBotsPageQuery__
+ *
+ * To run a query within a React component, call `useBotsPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBotsPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBotsPageQuery({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useBotsPageQuery(baseOptions: ApolloReactHooks.QueryHookOptions<BotsPageQuery, BotsPageQueryVariables> & ({ variables: BotsPageQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<BotsPageQuery, BotsPageQueryVariables>(BotsPageDocument, options);
+      }
+export function useBotsPageLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<BotsPageQuery, BotsPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<BotsPageQuery, BotsPageQueryVariables>(BotsPageDocument, options);
+        }
+export function useBotsPageSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<BotsPageQuery, BotsPageQueryVariables>) {
+          const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useSuspenseQuery<BotsPageQuery, BotsPageQueryVariables>(BotsPageDocument, options);
+        }
+export type BotsPageQueryHookResult = ReturnType<typeof useBotsPageQuery>;
+export type BotsPageLazyQueryHookResult = ReturnType<typeof useBotsPageLazyQuery>;
+export type BotsPageSuspenseQueryHookResult = ReturnType<typeof useBotsPageSuspenseQuery>;
+export type BotsPageQueryResult = Apollo.QueryResult<BotsPageQuery, BotsPageQueryVariables>;
 export const CheckCexAccountNameDocument = gql`
     mutation checkCexAccountName($name: String!) {
   cexAccount {

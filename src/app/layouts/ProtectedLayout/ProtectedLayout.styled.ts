@@ -22,7 +22,7 @@ export const PageContent = styled.div`
   align-items: center;
   min-height: calc(100vh - 8em);
   width: 100%;
-  padding: 8em 3em 10em 10.6em;
+  padding: 10em 6em 10em 3em;
   &.side-menu-hidden-mode {
     padding-left: 2em;
   }

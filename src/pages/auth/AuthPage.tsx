@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AUTH_SCREENS } from '../../shared/lib/constants/routes-names.const.ts';
-import GuestLayout from '../../app/layouts/GuestLayout/GuestLayout.tsx';
 import ReplacerDelayed from '../../zolp/shared/ui/molecules/ReplacerDelayed/ReplacerDelayed.tsx';
 import AccountAuthCard from '../../entities/account/ui/AccountAuthCard/AccountAuthCard.tsx';
 import TabsV2 from '../../zolp/shared/ui/atoms/Tabs/v2/TabsV2.tsx';
@@ -27,24 +26,22 @@ const AuthPage = () => {
   const tabItems = useAccountLoginFormTabs(authMode || '');
 
   return (
-    <GuestLayout>
-      <AccountAuthCard>
-        <TabsV2
-          items={tabItems}
-          containerHeight="5em"
-          containerWidth="100%"
-          buttonWidth="100%"
-        />
-        <ReplacerDelayed
-          keySelected={selectedTab}
-          components={{
-            login: <AccountLoginForm />,
-            register: <AccountRegisterForm />,
-          }}
-          ContainerComponent={FormContainer2}
-        />
-      </AccountAuthCard>
-    </GuestLayout>
+    <AccountAuthCard>
+      <TabsV2
+        items={tabItems}
+        containerHeight="5em"
+        containerWidth="100%"
+        buttonWidth="100%"
+      />
+      <ReplacerDelayed
+        keySelected={selectedTab}
+        components={{
+          login: <AccountLoginForm />,
+          register: <AccountRegisterForm />,
+        }}
+        ContainerComponent={FormContainer2}
+      />
+    </AccountAuthCard>
   );
 };
 

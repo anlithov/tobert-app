@@ -63,7 +63,7 @@ const LoginButton: FC<Props> = ({ setErrorMessage }) => {
   useEffect(() => {
     if (loginData) {
       setJwtAccount(loginData.account.auth.login.jwtToken);
-      navigate(ROUTES_NAMES.SHOWCASE);
+      navigate(ROUTES_NAMES.HOME);
     }
   }, [loginData]);
 

@@ -5,7 +5,7 @@ export const useDropdownControl = (props?: {
   disableOnOutsideClose?: boolean;
 }): {
   onClickProps: {
-    handleOpen(): void;
+    onClick(): void;
   };
   setShow: (v: boolean) => void;
   ref?: React.RefObject<any>;
@@ -18,7 +18,7 @@ export const useDropdownControl = (props?: {
 
   return {
     onClickProps: {
-      handleOpen: () => {
+      onClick: () => {
         setShow(!show);
       },
     },

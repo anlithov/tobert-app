@@ -1,0 +1,35 @@
+query botsPage($input: BotsListInput!) {
+  bot {
+    list(input: $input) {
+      page
+      size
+      items {
+        botId
+        name
+        testMode
+        cexMeta {
+          name
+          cexAccountId
+          cexName
+          image
+        }
+        statsInfo {
+          currentValue
+          costBasis
+          profitTaken
+        }
+        statusInfo {
+          status
+          timestamp
+        }
+        symbolsStats {
+          currentValue
+          image
+          coinBalance
+          price
+          symbol
+        }
+      }
+    }
+  }
+}

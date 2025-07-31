@@ -14,6 +14,7 @@ type Props = {
   rightElement?: ReactNode;
   disabled?: boolean;
   disabledDropdown?: boolean;
+  variant?: 'filled' | 'outlined';
 };
 
 const Accordion: FC<Props> = ({
@@ -26,6 +27,7 @@ const Accordion: FC<Props> = ({
   disabled,
   disabledDropdown,
   initialOpened,
+  variant = 'outlined',
 }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<number>(0);
@@ -72,7 +74,7 @@ const Accordion: FC<Props> = ({
     <Container
       width={width}
       padding={padding}
-      className={!getAccordionVisibility(accordionName) ? 'hoverable' : ''}
+      className={`${!getAccordionVisibility(accordionName) ? 'hoverable' : ''} ${variant}`}
       onClick={() => {
         if (!getAccordionVisibility(accordionName)) {
           toggleAccordionVisibility(accordionName);

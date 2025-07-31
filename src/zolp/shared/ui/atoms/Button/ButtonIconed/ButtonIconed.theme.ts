@@ -69,7 +69,7 @@ export const buttonIconedTheme = (
         'linear-gradient(to right, rgba(114, 159, 242, 0.9), rgba(107, 41, 231, 0.9))',
 
       iconButtonOutlinedColor: formColor(500),
-      iconButtonOutlinedBorderColor: formColor(600),
+      iconButtonOutlinedBorderColor: formColor(500),
       iconButtonOutlinedHoverBackground: addAlpha(formColor(500), 0.2),
       iconButtonOutlinedActiveBackground: addAlpha(formColor(500), 0.25),
     },

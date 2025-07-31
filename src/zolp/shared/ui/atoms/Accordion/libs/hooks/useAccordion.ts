@@ -1,12 +1,9 @@
-import { atom, useRecoilState } from 'recoil';
+import { atom, useAtom } from 'jotai';
 
-export const atomAccordionConfigs = atom<Record<string, boolean>>({
-  key: 'atomAccordionConfig',
-  default: {},
-});
+export const atomAccordionConfigs = atom<Record<string, boolean>>({});
 
 export const useAccordion = () => {
-  const [config, setConfig] = useRecoilState(atomAccordionConfigs);
+  const [config, setConfig] = useAtom(atomAccordionConfigs);
 
   const setAccordionConfig = (key: string, value: boolean) => {
     setConfig({

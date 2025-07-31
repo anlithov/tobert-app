@@ -58,8 +58,8 @@ export const buttonCommonTheme = (theme: DefaultTheme) => {
       buttonFilledHoverBackground: addAlpha(theme.palette.primary400, 0.9),
       buttonFilledActiveBackground: theme.palette.primary500,
 
-      buttonOutlinedColor: theme.palette.primary400,
-      buttonOutlinedBorder: addAlpha(theme.palette.secondary400, 0.6),
+      buttonOutlinedColor: theme.palette.primary300,
+      buttonOutlinedBorder: addAlpha(theme.palette.secondary500, 0.5),
       buttonOutlinedHoverBackground: addAlpha(theme.palette.primary500, 0.1),
       buttonOutlinedActiveBackground: addAlpha(theme.palette.primary500, 0.1),
 

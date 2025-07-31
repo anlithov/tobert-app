@@ -5,10 +5,14 @@ import { THEME_MODES } from '../../../../app/theme/theme-modes.ts';
 export const accordionTheme = (theme: DefaultTheme) => {
   return componentThemeConfig(theme.mode, {
     [THEME_MODES.light]: {
-      containerBackground: theme.palette.containerMainLight,
+      containerFilledBackground: theme.palette.containerMainLight,
+      containerOutlinedBackground: theme.palette.secondary800,
+      containerOutlinedBorder: theme.palette.containerMainLight,
     },
     [THEME_MODES.dark]: {
-      containerBackground: theme.palette.containerMainDark,
+      containerFilledBackground: theme.palette.secondary800,
+      containerOutlinedBackground: theme.palette.secondary800,
+      containerOutlinedBorder: theme.palette.secondary600,
     },
   });
 };

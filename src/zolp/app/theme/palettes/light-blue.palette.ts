@@ -35,6 +35,6 @@ export const lightBluePalette: Palette = {
   secondary500: '#8E95A4',
   secondary600: '#6A6F7A',
   secondary700: '#373840',
-  secondary800: '#2a2a30',
+  secondary800: '#27272c',
   secondary900: '#1d1e22',
 };

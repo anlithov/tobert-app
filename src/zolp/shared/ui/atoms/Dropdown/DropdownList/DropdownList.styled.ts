@@ -62,11 +62,12 @@ export const Container = styled.div<{
   height?: string;
 }>`
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   width: ${({ width }) => width};
   min-width: ${({ minWidth }) => minWidth};
   height: ${({ height }) => height};
+  overflow: hidden;
   box-shadow: ${({ theme }) =>
     `0px 1px 3px 1px ${addAlpha(
       dropdownListTheme(theme).containerShadow,
@@ -76,20 +77,24 @@ export const Container = styled.div<{
       0.2,
     )}`};
   border-radius: 0.8em;
-  padding: ${({ padding }) => padding};
   background-color: ${({ theme }) =>
     dropdownListTheme(theme).containerBackground};
-  max-height: ${({ maxHeight }) => maxHeight || 'initial'};
-  overflow: auto;
-  &::-webkit-scrollbar {
-    width: 0.6em;
-    background: ${({ theme }) =>
-      dropdownListTheme(theme).containerBackground} !important;
-    border-radius: 0 0.8em 0.8em 0;
-  }
-  &::-webkit-scrollbar-track {
-    background: ${({ theme }) =>
-      dropdownListTheme(theme).containerBackground} !important;
+  > .list {
+    padding: ${({ padding }) => padding};
+    max-height: ${({ maxHeight }) => maxHeight || 'initial'};
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 0.6em;
+      background: ${({ theme }) =>
+        dropdownListTheme(theme).containerBackground} !important;
+      border-radius: 0 0.8em 0.8em 0;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: ${({ theme }) =>
+        dropdownListTheme(theme).containerBackground} !important;
+    }
   }
 `;
 

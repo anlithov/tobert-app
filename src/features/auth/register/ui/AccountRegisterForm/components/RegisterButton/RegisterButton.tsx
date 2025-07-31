@@ -48,7 +48,7 @@ const RegisterButton: FC<Props> = ({ setErrorMessage }) => {
   useEffect(() => {
     if (data) {
       setJwtAccount(data.account.auth.register.jwtToken);
-      navigate(ROUTES_NAMES.SHOWCASE);
+      navigate(ROUTES_NAMES.HOME);
     }
   }, [data]);
 

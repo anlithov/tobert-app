@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoCloseCircle } from 'react-icons/io5';
-import IconButton from '../../Button/ButtonIconed/IconButton';
 import AppField from '../base/AppField.tsx';
 import {
   RightElementContainer,
   SearchIconContainer,
 } from './SearchField.styled.ts';
 import { AppFieldProps } from '../base/AppField.types.ts';
+import ButtonIconed from '../../Button/ButtonIconed/ButtonIconed.tsx';
 
 interface SearchFieldProps extends AppFieldProps {
   onClearValue?: () => void;
@@ -35,14 +35,14 @@ const SearchField: FC<SearchFieldProps> = ({
         value &&
         value?.length > 0 && (
           <RightElementContainer className={`${errors?.length ? 'error' : ''}`}>
-            <IconButton
+            <ButtonIconed
               onClick={onClearValue}
               width="3.2em"
               variant="flat"
               color="secondary"
             >
               <IoCloseCircle size="2.4em" />
-            </IconButton>
+            </ButtonIconed>
           </RightElementContainer>
         )
       }

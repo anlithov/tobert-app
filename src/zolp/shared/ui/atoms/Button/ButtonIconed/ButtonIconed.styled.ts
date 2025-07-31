@@ -114,28 +114,14 @@ export const IconButtonContainer = styled.button<{
     }
   }
 
-  &.${BUTTON_VARIANTS.GRADIENT} {
-    color: ${({ theme, color }) =>
-      buttonIconedTheme(theme, color).iconButtonGradientColor};
-
-    background: ${({ theme, color }) =>
-      buttonIconedTheme(theme, color).iconButtonGradientBackground};
-    &:hover {
-      background: ${({ theme, color }) =>
-        buttonIconedTheme(theme, color).iconButtonGradientHoverBackground};
-    }
-    &:active,
-    &.active {
-      background: ${({ theme, color }) =>
-        buttonIconedTheme(theme, color).iconButtonGradientActiveBackground};
-    }
-  }
-
   &.${BUTTON_VARIANTS.OUTLINED} {
     color: ${({ theme, color }) =>
       buttonIconedTheme(theme, color).iconButtonOutlinedColor};
     border-color: ${({ theme, color }) =>
-      buttonIconedTheme(theme, color).iconButtonOutlinedBorderColor};
+      addAlpha(
+        buttonIconedTheme(theme, color).iconButtonOutlinedBorderColor,
+        0.4,
+      )};
     border-style: solid;
     border-width: 0.1em;
     background: ${({ theme, color }) =>

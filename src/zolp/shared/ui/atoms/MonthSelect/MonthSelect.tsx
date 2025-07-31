@@ -100,11 +100,7 @@ const MonthSelect: FC<Props> = ({
         vertical: 'bottom',
       }}
     >
-      <div
-        ref={ref}
-        onClick={onClickProps.handleOpen}
-        style={{ width: '100%' }}
-      >
+      <div ref={ref} onClick={onClickProps.onClick} style={{ width: '100%' }}>
         <ControlField>
           <Title>{format(displayedMonth, 'MMMM yyyy')}</Title>
           <Divider width="0.8em" />

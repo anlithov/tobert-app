@@ -5,20 +5,15 @@ import {
   ROUTES_NAMES_GENERATOR,
 } from '../shared/lib/constants/routes-names.const';
 import PageRedirect from '../app/guards/PageRedirect.tsx';
-import GuestGuard from '../app/guards/GuestGuard.tsx';
 import { useJwtStore } from '../app/lib/hooks/use-jwt-tokens.hook.ts';
 
 const AuthToLoginRedirect = () => {
   const { jwtAccount } = useJwtStore();
 
-  return (
-    <GuestGuard>
-      {jwtAccount ? (
-        <PageRedirect route={ROUTES_NAMES.SHOWCASE} />
-      ) : (
-        <PageRedirect route={ROUTES_NAMES_GENERATOR.AUTH(AUTH_SCREENS.login)} />
-      )}
-    </GuestGuard>
+  return jwtAccount ? (
+    <PageRedirect route={ROUTES_NAMES.SHOWCASE} />
+  ) : (
+    <PageRedirect route={ROUTES_NAMES_GENERATOR.AUTH(AUTH_SCREENS.login)} />
   );
 };
 
