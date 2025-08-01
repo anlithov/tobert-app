@@ -6,6 +6,8 @@ import {
 } from './ButtonShow-2.styled.ts';
 import { ButtonCommon } from '../../../../zolp/shared/ui/atoms/Button/ButtonCommon/ButtonCommon.tsx';
 import { BUTTON_VARIANTS } from '../../../../zolp/shared/ui/atoms/Button/libs/constants/button.variants.ts';
+import { BiAccessibility, BiAnchor } from 'react-icons/bi';
+import { AiFillAlipayCircle } from 'react-icons/ai';
 
 const ButtonShow2 = () => {
   return (
@@ -20,7 +22,6 @@ const ButtonShow2 = () => {
             disabled
           />
           <ButtonCommon variant={BUTTON_VARIANTS.FILLED} text="Tag" />
-          <ButtonCommon variant={BUTTON_VARIANTS.FILLED} text="Tag" disabled />
         </BoxButtons>
         <BoxButtons>
           <h6>Outlined button</h6>
@@ -46,6 +47,19 @@ const ButtonShow2 = () => {
           />
           <ButtonCommon variant={BUTTON_VARIANTS.FLAT} text="Label" />
         </BoxButtons>
+        <ContainerBigger>
+          <BoxButtons>
+            <h6>Scaled Bigger Button</h6>
+            <ButtonCommon variant={BUTTON_VARIANTS.FILLED} />
+
+            <ButtonCommon variant={BUTTON_VARIANTS.FILLED} text="Tag" />
+            <ButtonCommon
+              variant={BUTTON_VARIANTS.FILLED}
+              text="Tag"
+              disabled
+            />
+          </BoxButtons>
+        </ContainerBigger>
       </ButtonGroupContainer>
       <ButtonGroupContainer>
         <BoxButtons>
@@ -78,21 +92,69 @@ const ButtonShow2 = () => {
             disabled
           />
         </BoxButtons>
-      </ButtonGroupContainer>
-      <ContainerBigger>
         <BoxButtons>
-          <h6>Scaled Bigger Button</h6>
-          <ButtonCommon variant={BUTTON_VARIANTS.FILLED} />
-          <ButtonCommon variant={BUTTON_VARIANTS.FILLED} />
+          <h6>Loading button</h6>
           <ButtonCommon
+            loading
             variant={BUTTON_VARIANTS.FILLED}
-            text="Example"
-            disabled
+            text="Loading"
           />
-          <ButtonCommon variant={BUTTON_VARIANTS.FILLED} text="Tag" />
-          <ButtonCommon variant={BUTTON_VARIANTS.FILLED} text="Tag" disabled />
         </BoxButtons>
-      </ContainerBigger>
+      </ButtonGroupContainer>
+      <ButtonGroupContainer>
+        <BoxButtons className="center">
+          <h6>With custom width and height</h6>
+          <ButtonCommon
+            width="1em"
+            height="1em"
+            variant={BUTTON_VARIANTS.FILLED}
+          />
+          <BoxButtons>
+            <ButtonCommon
+              width="10em"
+              height="10em"
+              variant={BUTTON_VARIANTS.FILLED}
+            />
+          </BoxButtons>
+        </BoxButtons>
+        <BoxButtons>
+          <h6>Button with Only Icon</h6>
+          <ButtonCommon
+            width="15em"
+            height="10em"
+            variant={BUTTON_VARIANTS.FILLED}
+          >
+            <div
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}
+            >
+              <BiAccessibility size="5em" />
+              <span>Fast learning React</span>
+            </div>
+          </ButtonCommon>
+          <ButtonCommon variant={BUTTON_VARIANTS.FILLED}>
+            <BiAnchor size="5em" />
+          </ButtonCommon>
+        </BoxButtons>
+        <BoxButtons>
+          <h6>"IconLeft" and "iconRight"</h6>
+          <ButtonCommon
+            text="Left"
+            variant={BUTTON_VARIANTS.FILLED}
+            height="5em"
+            iconLeft={<AiFillAlipayCircle size="5em" />}
+          />
+          <ButtonCommon
+            text="Right"
+            variant={BUTTON_VARIANTS.FILLED}
+            height="5em"
+            iconRight={<AiFillAlipayCircle size="5em" />}
+          />
+        </BoxButtons>
+        <BoxButtons>
+          <h6>Smaller Border radius</h6>
+          <ButtonCommon borderRadius={'0em'} variant={BUTTON_VARIANTS.FILLED} />
+        </BoxButtons>
+      </ButtonGroupContainer>
     </div>
   );
 };

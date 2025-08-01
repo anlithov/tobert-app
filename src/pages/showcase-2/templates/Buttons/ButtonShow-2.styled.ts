@@ -13,6 +13,11 @@ export const BoxButtons = styled.div`
   display: flex;
   gap: 2em;
   flex-direction: column;
+  &.center {
+    display: flex;
+    justify-content: center; /* по горизонтали */
+    align-items: center;
+  }
 `;
 
 export const ContainerBigger = styled.div`
