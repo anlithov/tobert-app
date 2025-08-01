@@ -4,11 +4,9 @@ import { ContainerShowcase2 } from './Showcase2Page.styled.ts';
 
 const Showcase2Page = () => {
   return (
-    <div>
-      <ContainerShowcase2>
-        <ButtonShow2 />
-      </ContainerShowcase2>
-    </div>
+    <ContainerShowcase2>
+      <ButtonShow2 />
+    </ContainerShowcase2>
   );
 };
 

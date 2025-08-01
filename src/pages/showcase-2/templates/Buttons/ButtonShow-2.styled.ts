@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const ButtonGroupContainer = styled.div`
   display: flex;
   gap: 8em;
   > * {
@@ -13,9 +13,6 @@ export const BoxButtons = styled.div`
   display: flex;
   gap: 2em;
   flex-direction: column;
-  > * {
-    overflow: hidden;
-  }
 `;
 
 export const ContainerBigger = styled.div`
@@ -25,14 +22,12 @@ export const ContainerBigger = styled.div`
     width: 30em;
   }
   flex-wrap: wrap;
-  &.button-Begger {
-    button {
-      font-size: 1.2em;
-    }
+  button {
+    font-size: 1.2em;
   }
 `;
 
-export const GlobolStyleDivShow2 = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
