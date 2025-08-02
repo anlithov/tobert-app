@@ -13,6 +13,7 @@ export const ROUTES_NAMES = {
   AUTH: '/auth',
   AUTH_DYNAMIC: `/auth/:${DYNAMIC_SLUGS.authMode}`,
   SHOWCASE: '/showcase',
+  SHOWCASE_2: '/showcase-2',
   //
   HOME: '/home',
   CEX_ACCOUNTS: '/cex-accounts',

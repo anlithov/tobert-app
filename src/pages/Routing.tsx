@@ -10,11 +10,13 @@ import ProtectedLayout from '../app/layouts/ProtectedLayout/ProtectedLayout.tsx'
 import GuestLayout from '../app/layouts/GuestLayout/GuestLayout.tsx';
 import HomePage from './home/HomePage.tsx';
 import CreateBotPage from './create-bot/CreateBotPage.tsx';
+import Showcase2Page from './showcase-2/Showcase2Page.tsx';
 
 export const Routing = () => {
   return (
     <Routes>
       <Route path={ROUTES_NAMES.SHOWCASE} Component={ShowcasePage} />
+      <Route path={ROUTES_NAMES.SHOWCASE_2} Component={Showcase2Page} />
       <Route path="*" Component={Page404} />
       <Route index Component={AuthToLoginRedirect} />
       <Route element={<GuestLayout />}>
