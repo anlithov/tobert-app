@@ -37,3 +37,9 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 2em;
 `;
+
+export const ShowcaseIconStyle = styled.div`
+  display: flex;
+  alignitems: center;
+  gap: 0.5em;
+`;

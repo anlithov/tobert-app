@@ -3,15 +3,17 @@ import {
   BoxButtons,
   ButtonGroupContainer,
   ContainerBigger,
+  ShowcaseIconStyle,
 } from './ButtonShow-2.styled.ts';
 import { ButtonCommon } from '../../../../zolp/shared/ui/atoms/Button/ButtonCommon/ButtonCommon.tsx';
 import { BUTTON_VARIANTS } from '../../../../zolp/shared/ui/atoms/Button/libs/constants/button.variants.ts';
 import { BiAccessibility, BiAnchor } from 'react-icons/bi';
 import { AiFillAlipayCircle } from 'react-icons/ai';
+import ShowcaseIsLodingFun from './ShowcaseIsLodingFun.tsx';
 
 const ButtonShow2 = () => {
   return (
-    <div>
+    <>
       <ButtonGroupContainer>
         <BoxButtons>
           <h6>Filled button</h6>
@@ -124,9 +126,7 @@ const ButtonShow2 = () => {
             height="10em"
             variant={BUTTON_VARIANTS.FILLED}
           >
-            <div
-              style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}
-            >
+            <div className={ShowcaseIconStyle}>
               <BiAccessibility size="5em" />
               <span>Fast learning React</span>
             </div>
@@ -152,10 +152,14 @@ const ButtonShow2 = () => {
         </BoxButtons>
         <BoxButtons>
           <h6>Smaller Border radius</h6>
-          <ButtonCommon borderRadius={'0em'} variant={BUTTON_VARIANTS.FILLED} />
+          <ButtonCommon borderRadius={'1em'} variant={BUTTON_VARIANTS.FILLED} />
+        </BoxButtons>
+        <BoxButtons>
+          <h6>Button OnClick</h6>
+          <ShowcaseIsLodingFun />
         </BoxButtons>
       </ButtonGroupContainer>
-    </div>
+    </>
   );
 };
 
