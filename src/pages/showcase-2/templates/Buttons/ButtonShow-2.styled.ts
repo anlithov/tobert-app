@@ -15,7 +15,6 @@ export const BoxButtons = styled.div`
   flex-direction: column;
   &.center {
     display: flex;
-    justify-content: center; /* по горизонтали */
     align-items: center;
   }
 `;
