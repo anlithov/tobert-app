@@ -9,7 +9,7 @@ import { ButtonCommon } from '../../../../zolp/shared/ui/atoms/Button/ButtonComm
 import { BUTTON_VARIANTS } from '../../../../zolp/shared/ui/atoms/Button/libs/constants/button.variants.ts';
 import { BiAccessibility, BiAnchor } from 'react-icons/bi';
 import { AiFillAlipayCircle } from 'react-icons/ai';
-import ShowcaseIsLodingFun from './ShowcaseIsLodingFun.tsx';
+import ShowcaseIsLoadingFun from './ShowcaseIsLoadingFun.tsx';
 
 const ButtonShow2 = () => {
   return (
@@ -156,7 +156,7 @@ const ButtonShow2 = () => {
         </BoxButtons>
         <BoxButtons>
           <h6>Button OnClick</h6>
-          <ShowcaseIsLodingFun />
+          <ShowcaseIsLoadingFun />
         </BoxButtons>
       </ButtonGroupContainer>
     </>

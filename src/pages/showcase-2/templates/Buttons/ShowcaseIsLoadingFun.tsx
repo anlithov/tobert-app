@@ -2,21 +2,23 @@ import { ButtonCommon } from '../../../../zolp/shared/ui/atoms/Button/ButtonComm
 import { useState } from 'react';
 import { BUTTON_VARIANTS } from '../../../../zolp/shared/ui/atoms/Button/libs/constants/button.variants.ts';
 
-const ShowcaseIsLodingFun = () => {
+const ShowcaseIsLoadingFun = () => {
   const [isLoading, setIsLoading] = useState(false);
   const handleClick = () => {
     setIsLoading(!isLoading);
   };
+
   return (
-    <div>
-      <ButtonCommon
-        variant={BUTTON_VARIANTS.FILLED}
-        loading={isLoading}
-        onClick={handleClick}
-        text="Click me please"
-      ></ButtonCommon>
-    </div>
+    <ButtonCommon
+      borderRadius={'0em'}
+      width="15em"
+      height="10em"
+      variant={BUTTON_VARIANTS.FILLED}
+      loading={isLoading}
+      onClick={handleClick}
+      text="Click me please"
+    />
   );
 };
 
-export default ShowcaseIsLodingFun;
+export default ShowcaseIsLoadingFun;
